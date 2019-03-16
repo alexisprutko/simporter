@@ -16,14 +16,13 @@ import { Route } from 'react-router-dom'
 import LeftDivider from '../components/LeftDivider'
 import UserAvatar from '../components/Avatar'
 
-
 import Dashboard from './Dashboard'
 import Forecast from './Forecast'
 import Messaging from './Messaging'
 import Rankings from './Rankings'
 
-const drawerWidth = 240;
 
+const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
@@ -41,7 +40,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
-    backgroundColor: "#f6f7f9"
+    backgroundColor: "#f6f7f9",
   },
   menuButton: {
     marginRight: 20,
@@ -53,11 +52,16 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  listBox:{
+    paddingTop: 0
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
 
   },
+  
+  
 });
 
 class Home extends React.Component {
@@ -70,11 +74,11 @@ class Home extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
-    
+    const { classes, theme, location:{ pathname} } = this.props;
+
     const drawer = (
       <div>
-        <LeftDivider classes={classes} />
+        <LeftDivider classes={classes} activeName={pathname}/>
       </div>
     );
 

@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider'
 
 import data from '../testData/initialMenu'
-import { InitialMenuGridElement, CategoryBox, InitialMenuButton } from '../components/ui'
+import { InitialMenuGridElement, CategoryBox, InitialMenuButton, TextSpan } from '../components/ui'
+import Colors from '../constants/Colors'
 
 const styles = theme => ({
     root: {
@@ -50,7 +51,9 @@ function Category(props) {
                                             className={classes.paper}
                                             disabled={!item.active}
                                         >
-                                            {item.name}
+                                            <TextSpan color={ item.active ? Colors.white : Colors.mainGrey}>
+                                                {item.name}
+                                            </TextSpan>
                                         </InitialMenuButton>
                                     </InitialMenuGridElement>
                                 ))

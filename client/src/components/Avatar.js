@@ -35,9 +35,10 @@ class UserAvatar extends React.Component {
       <div>
         <Button
             onClick={this.handleClick}
+            style={{maxHeight: 68}}
         >
             <Avatar src="http://shing.mobile9.com/download/media/442/avatarmrbe_yfqlmi9e.jpg" />
-            <h4> Area Strak </h4>
+            <h5> Area Strak </h5>
         </Button>
         <Menu
           id="long-menu"
@@ -46,7 +47,7 @@ class UserAvatar extends React.Component {
           onClose={this.handleClose}
           PaperProps={{
             style: {
-              maxHeight: Sizes.AVATAR_MENU_ITEM_HEIGHT * 4.5,
+              maxHeight: Sizes.AVATAR_MENU_ITEM_HEIGHT * 4,
               width: 200,
             },
           }}
