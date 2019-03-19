@@ -6,11 +6,11 @@ export default [
         path: '/',
     },
     {
-        name: "Rankings",
+        name: "Overall Rankings",
         path: '/rankings',
     },
     {
-        name: "Sub Rankings",
+        name: "Rankings by subcategory",
         path: '/rankings-sub',
     },
     {

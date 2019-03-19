@@ -36,7 +36,8 @@ export const CategoryBox = styled.div`
 export const LeftNavigationListItem = styled(ListItem)`
    background-color: ${props => props.selected ? Colors.liteBlue : Colors.white} !important;
    border-left: 4px solid;
-   border-color: ${props => props.selected ? Colors.mainBlue : 'transparent'}
+   border-color: ${props => props.selected ? Colors.mainBlue : 'transparent'};
+   margin-top: 24px;
 `
 export const LeftNavigationListItemText = styled.span`
    color: ${props => props.selected ? Colors.mainBlue : Colors.mainGrey};
@@ -68,8 +69,8 @@ export const TextSpan = styled.span`
 `
 
 export const Separator = styled.div`
-   height: ${props => props.vertical ? props.vertical: '10px'};
-   width: ${props => props.horizontal ? props.horizontal: '0px'};
+   height: ${props => props.vertical ? props.vertical : '10px'};
+   width: ${props => props.horizontal ? props.horizontal : '0px'};
 `
 
 export const AnimationBox = styled(Grid)`
@@ -78,7 +79,7 @@ export const AnimationBox = styled(Grid)`
 `
 
 export const DialogueCardHeader = styled(Grid)`
-   background-color: ${props => props.color ? props.color : 'red'};
+   background-color: ${props => props.color ? props.color : 'red'};  
    border-top-left-radius: 8px;
    border-top-right-radius: 8px;
    flex-wrap: wrap;
@@ -134,4 +135,52 @@ export const RoundButton = styled.div`
       opacity: 0.7;
    }
 
+`
+export const ActiveHeaderItemBox = styled.div`
+   background-color: ${props => props.color ? props.color : Colors.mainGrey};
+   border-radius: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   padding: 5px 15px;
+   &:hover{
+      opacity: 0.7;
+   }
+
+`
+export const SmallSquareBox = styled.div`
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   min-height: 38px;
+   min-width: 38px;
+   border-radius: 10%;
+   background-color: ${props => props.bColor ? props.bColor : Colors.mainBlue}
+`
+export const GreenBorderBox = styled.div`
+   border: 1px solid ${Colors.lightGreen};
+   border-radius: 4px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   min-height: 40px;
+   min-width: 100px;
+`
+export const RectangleDish = styled(Paper)`
+   width: 352px;
+   height:152px;
+   margin: 1.3%;
+   margin-left: 0;
+   background-color: ${ props => props.active ? Colors.mainBlue : Colors.white} !important;
+   cursor: pointer;
+`
+export const NumTexSpan = styled(TextSpan)`
+   position: absolute;
+   top: 5%;
+   left:2%;
+   opacity: 0.5
 `

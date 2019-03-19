@@ -20,9 +20,10 @@ import Dashboard from './Dashboard'
 import Forecast from './Forecast'
 import Messaging from './Messaging'
 import Rankings from './Rankings'
+import RankingsSub from './RankingsSub'
 
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const styles = theme => ({
   root: {
@@ -33,7 +34,7 @@ const styles = theme => ({
       width: drawerWidth,
       flexShrink: 0,
     },
-    boxShadow: '16px 0px 32px rgba(128, 128, 128, 0.08)'
+    // boxShadow: '16px 0px 32px rgba(128, 128, 128, 0.08)'
   },
   appBar: {
     marginLeft: drawerWidth,
@@ -135,6 +136,7 @@ class Home extends React.Component {
           <Route path="/forecast" component={Forecast} />
           <Route path="/messaging" component={Messaging} />
           <Route path="/rankings" component={Rankings} />
+          <Route path="/rankings-sub" component={RankingsSub} />
         </main>
       </div>
     );

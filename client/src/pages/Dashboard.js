@@ -8,10 +8,14 @@ import SmallDish from '../components/SmallDish'
 import Chart from '../components/Chart'
 import DialogueCard from '../components/DialogueCard'
 import data from '../testData/dasboardData'
+import { scrollTop } from '../helpers/scroll';
 
 
 
 export default class Dashboard extends Component {
+  componentWillUnmount = () => {
+    scrollTop()
+  }
   render() {
     const { history: { push } } = this.props
     return (
