@@ -20,7 +20,7 @@ class Forecast extends Component {
     scrollTop()
   }
   render() {
-    const { overallRankings, productCardCondition: { active, data: { name, image, move } }, selectProduct } = this.props
+    const { overallRankings  } = this.props
     return (
       <AnimationBox
         container
@@ -39,7 +39,7 @@ class Forecast extends Component {
                 data={overallRankings}
                 selectProduct={() => this.setState({condition: "item"})}
                 productCardCondition={this.props.productCardCondition}
-                expectedRank={true}
+                expectedRank={"true"}
                 star={true}
               />
 

@@ -8,16 +8,15 @@ import Star from '@material-ui/icons/Star'
 
 
 
-const styles = theme => ({
-    box:{ padding: '20px 2rem', marginTop: "0.5em", }
-})
+// const styles = theme => ({
+//     box:{ padding: '20px 2rem', marginTop: "0.5em", }
+// })
 
 export default class RankingsTableItem extends Component {
     render() {
         const { name, brand, sku, duration, move, id, active, handleClick, expectedRank } = this.props
         const textColor = !active ?  Colors.textBlue : Colors.white
         const bColor = !active ? {} : {backgroundColor: Colors.mainBlue}
-        console.log(this.props.star)
         return (
             <Paper
                 style={{ padding: '20px 2rem', marginTop: "0.5em", cursor:"pointer", ...bColor}}

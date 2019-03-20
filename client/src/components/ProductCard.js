@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Paper, Grid } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import { TextSpan, ImageBox, ProductCardBox, Separator, TextBox } from './ui';
 import Colors from '../constants/Colors';
 import numberTransformer from '../helpers/numberAdder'

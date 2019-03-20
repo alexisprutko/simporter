@@ -8,5 +8,8 @@ export default {
     lightGreen: '#60CC64',
     mainPink: "#FF7B8C",
     paleBlue: "#F2FBFF" ,
-    golden: "#F7D200"
+    golden: "#F7D200",
+    strenght: "#0EBAA5",
+    strenghtGradient: "rgba(15, 199, 177, .8)",
+    lightBlue: "#9ad3ff"
   };

@@ -3,7 +3,7 @@ import { Grid, Button, ListItem, Paper } from '@material-ui/core'
 import { media } from './mediaConfig'
 import Colors from '../../constants/Colors'
 import { mainAnimation } from './animation'
-import ProductCard from '../ProductCard';
+
 
 // logo
 export const Logo = styled.h1`
@@ -203,9 +203,19 @@ export const ProductCardBox = styled(Grid)`
    padding: ${props => props.padding ? props.padding : 0};
    width: 480px;
    height: 580px;
-` 
+`
 export const TextBox = styled.span`
    padding: 5px 20px;
    background-color: ${Colors.paleBlue};
    border-radius: 8px;
+`
+export const PercentItemBox = styled(Grid)`
+   width: 540px !important;
+   height: 44px !important; 
+   border-color:  ${props => props.bordercolor ?  props.bordercolor : "red"} !important;
+   border-width: 1px;
+   border-style: solid;
+   border-radius: 4px; 
+   box-sizing: border-box; 
+   margin-top: 20px
 `
