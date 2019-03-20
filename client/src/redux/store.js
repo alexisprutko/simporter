@@ -13,6 +13,7 @@ const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist:['productCardCondition', 'overallRankings', 'rankingsBySubNav']
 }
  
 const persistedReducer = persistReducer(persistConfig, rootReducer)

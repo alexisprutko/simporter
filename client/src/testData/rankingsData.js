@@ -6,6 +6,7 @@ export default [
         duration: "Year 2",
         brand: "MAYBELLINE",
         move:{ num: 2, type: true },
+        image: 'https://tinyjpg.com/images/social/website.jpg'
     },
     {   
         id: 2,
@@ -14,6 +15,7 @@ export default [
         duration: "New",
         brand: "STILA ",
         move:{ num: 5, type: true },
+        image: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg'
     },
     {   
         id: 3,
@@ -22,6 +24,7 @@ export default [
         duration: "Year 5",
         brand: "L’Oréal ",
         move:{ num: 4, type: true },
+        image: 'https://tinyjpg.com/images/social/website.jpg'
     },
     {   
         id: 4,
@@ -30,6 +33,7 @@ export default [
         duration: "Year 2",
         brand: "COLOURPOP",
         move:{ num: 6, type: true },
+        image: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg'
     },
     {   
         id: 5,
@@ -38,6 +42,7 @@ export default [
         duration: "Year 2",
         brand: "STILA ",
         move:{ num: 5, type: false },
+        image: 'https://tinyjpg.com/images/social/website.jpg'
     },
     {   
         id: 6,
@@ -46,6 +51,7 @@ export default [
         duration: "New",
         brand: "KYLIE COSMETICS ",
         move:{ num: 7, type: false },
+        image: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg'
     },
     {   
         id: 7,
@@ -54,6 +60,7 @@ export default [
         duration: "Year 8",
         brand: "MAYBELLINE ",
         move:{ num: 2, type: true },
+        image: 'https://tinyjpg.com/images/social/website.jpg'
     },
     {   
         id: 8,
@@ -62,6 +69,7 @@ export default [
         duration: "Year 2",
         brand: "MAYBELLINE",
         move:{ num: 2, type: true },
+        image: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg'
     },
     {   
         id: 9,
@@ -70,6 +78,7 @@ export default [
         duration: "Year 2",
         brand: "MAYBELLINE",
         move:{ num: 1, type: true },
+        image: 'https://tinyjpg.com/images/social/website.jpg'
     },
     {   
         id: 10,
@@ -78,5 +87,6 @@ export default [
         duration: "Year 2",
         brand: "MAYBELLINE",
         move:{ num: 5 , type: true },
+        image: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg'
     },
 ]

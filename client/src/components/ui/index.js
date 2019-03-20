@@ -3,6 +3,7 @@ import { Grid, Button, ListItem, Paper } from '@material-ui/core'
 import { media } from './mediaConfig'
 import Colors from '../../constants/Colors'
 import { mainAnimation } from './animation'
+import ProductCard from '../ProductCard';
 
 // logo
 export const Logo = styled.h1`
@@ -183,4 +184,28 @@ export const NumTexSpan = styled(TextSpan)`
    top: 5%;
    left:2%;
    opacity: 0.5
+`
+
+export const TableBox = styled(Grid)`
+   max-width: 992px;
+   width: 60%;
+
+`
+export const ImageBox = styled.div`
+   width: 286px;
+   height: 227px;
+   background-image: url(${props => props.image});
+   background-repeat: no-repeat;
+   background-size: cover;
+`
+export const ProductCardBox = styled(Grid)`
+   margin: ${props => props.margin ? props.margin : 0};
+   padding: ${props => props.padding ? props.padding : 0};
+   width: 480px;
+   height: 580px;
+` 
+export const TextBox = styled.span`
+   padding: 5px 20px;
+   background-color: ${Colors.paleBlue};
+   border-radius: 8px;
 `

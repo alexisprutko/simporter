@@ -2,12 +2,22 @@ import React, { Component } from 'react'
 import RankingsTableHeader from './RankingsTableHeader'
 import PropTypes from 'prop-types'
 import RankingsTableItem from './RankingsTableItem'
-import { Grid } from '@material-ui/core';
+import { TableBox } from '../ui'
 export default class RankingsTable extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeItem: props.productCardCondition.data
+    }
+  }
+  handleSelect = (data) => {
+    this.setState({ activeItem: data })
+    this.props.selectProduct(data)
+  }
   render() {
     const { data } = this.props
     return (
-      <Grid
+      <TableBox
         style={{ maxWidth: "992px" }}
       >
         <RankingsTableHeader
@@ -16,6 +26,9 @@ export default class RankingsTable extends Component {
           name="NAME"
           sku="SKU"
           active="BRAND"
+          expectedRank={this.props.expectedRank ? "Expected Rank" : false}
+          star={this.props.star}
+          
         />
 
         {
@@ -28,10 +41,14 @@ export default class RankingsTable extends Component {
               brand={elem.brand}
               move={elem.move}
               id={elem.id}
+              active={this.state.activeItem ? this.state.activeItem.id === elem.id : false}
+              handleClick={() => this.handleSelect(elem)}
+              star={this.props.star}
+              expectedRank={elem.id}
             />
           ))
         }
-      </Grid>
+      </TableBox>
     )
   }
 }
@@ -42,7 +59,8 @@ RankingsTable.propTypes = {
   name: PropTypes.string,
   sku: PropTypes.string,
   expectedRank: PropTypes.string,
-  active: PropTypes.oneOf(["NAME", "BRAND", "RANK", "SKU", "EXPECTEDRANK"]).isRequired
+  active: PropTypes.oneOf(["NAME", "BRAND", "RANK", "SKU", "EXPECTEDRANK"]).isRequired,
+  selectProduct: PropTypes.func.isRequired
 }
 
 RankingsTable.defaultProps = {

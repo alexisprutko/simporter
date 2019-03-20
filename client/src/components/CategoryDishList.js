@@ -9,7 +9,9 @@ export default class CategoryDishList extends Component {
         const color = active ? Colors.white : Colors.textBlue
         const Id = id + 1 < 10 ? "0" + (id + 1) : id + 1
         return (
-            <RectangleDish active={active ? 1 : 0}>
+            <RectangleDish active={active ? 1 : 0}
+                onClick={this.props.handleClick}
+            >
                 <Grid
                     style={{ height: "100%", position: "relative" }}
                     container

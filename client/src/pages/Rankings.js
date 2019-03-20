@@ -2,18 +2,21 @@ import React, { Component } from 'react'
 import { Grid } from '@material-ui/core'
 import TopDish from '../components/TopDish'
 import RankingsTable from '../components/RankingsTable'
+import ProductCard from '../components/ProductCard'
 import { Separator, AnimationBox } from '../components/ui';
 
 import { connect } from 'react-redux'
 import { scrollTop } from '../helpers/scroll';
 
+import { selectProduct } from '../redux/ducks/productCardCondition'
 
 class Rankings extends Component {
   componentWillUnmount = () => {
     scrollTop()
   }
   render() {
-   const { overallRankings } = this.props
+
+    const { overallRankings, productCardCondition: {  active, data:{name, image, move} } ,selectProduct} = this.props
     return (
       <AnimationBox
         container
@@ -25,20 +28,37 @@ class Rankings extends Component {
 
         />
         <Separator vertical="2rem" />
-        <RankingsTable
-          active="BRAND"
-          data={overallRankings}
-        />
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+        >
+
+          <RankingsTable
+            active="BRAND"
+            data={overallRankings}
+            selectProduct={selectProduct}
+            productCardCondition={this.props.productCardCondition}
+            
+            
+          />
+          {active && <ProductCard
+            title={name}
+            image={image}
+            rank={move ? move.num : false}
+          />}
+        </Grid>
       </AnimationBox>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  overallRankings: state.overallRankings
+  overallRankings: state.overallRankings,
+  productCardCondition: state.productCardCondition,
 })
 const mapDispatchToProps = {
-
+  selectProduct,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rankings) 

@@ -8,5 +8,8 @@ export default {
     UPCOMING_LAUNCHES:'Upcoming launches',
     PINNED_ACTIONS: "Pinned Actions",
     URGENT: "URGENT",
-    URGENT_T_A_NOW: "urgent take action now"
+    URGENT_T_A_NOW: "urgent take action now",
+    BACK_T_R_S: "Back to Rankings by subcategory",
+    BACK_T_F: "Back to Top 100 Forecast",
+    TOP_100_FORECAST: "Top 100 Forecast"
 }

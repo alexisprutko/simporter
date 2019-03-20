@@ -6,5 +6,7 @@ export default {
     mainGrey: '#7A7A7A',
     textBlue: '#2B3D6B',
     lightGreen: '#60CC64',
-    mainPink: "#FF7B8C"
+    mainPink: "#FF7B8C",
+    paleBlue: "#F2FBFF" ,
+    golden: "#F7D200"
   };

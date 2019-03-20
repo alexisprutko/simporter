@@ -1,38 +1,91 @@
 import React, { Component } from 'react'
 import { scrollTop } from '../helpers/scroll';
 import { Grid } from '@material-ui/core';
-import CategoryDishList from '../components/CategoryDishList'
-import { TextSpan, AnimationBox, Separator, CategoryBox } from '../components/ui';
-import Colors from '../constants/Colors';
-import data from '../testData/rankingsBySubcategory'
+import { NavigateBefore } from '@material-ui/icons'
+import { AnimationBox, Separator, BackLink } from '../components/ui';
+import { CATEGORY, changeCategory, changeTable } from '../redux/ducks/rankingsBySubNav'
+import RankingsCategory from '../components/RankingsCategory'
+import RankingsTable from '../components/RankingsTable'
+import ProductCard from '../components/ProductCard'
+import { selectProduct } from '../redux/ducks/productCardCondition'
+import TopDish from '../components/TopDish'
+import Strings from '../constants/Strings'
+import { connect } from 'react-redux'
 
-export default class RankingsSub extends Component {
+
+class RankingsSub extends Component {
   componentWillUnmount = () => {
     scrollTop()
   }
-  render() {
 
+  render() {
+    const { overallRankings, productCardCondition: { active, data: { name, image, move } }, selectProduct } = this.props
     return (
       <AnimationBox
         container
       >
-        <TextSpan
-        color={Colors.textBlue}
-        size="28px"
-        >
-          Rankings by subcategory
-       </TextSpan>
-       <Separator horizontal="48px"/>
-        <Grid
-          container
-        >
         {
-          data.map((elem,index) => (
-            <CategoryDishList elem={elem} id={index} key={index} />
-          ))
+          this.props.rankingsBySubNav.component === CATEGORY ?
+            (
+              <RankingsCategory handleClick={this.props.changeTable} />
+            ) :
+            (
+              <Grid
+                container
+                direction="column"
+              >
+                <Separator vertical="1rem" />
+                <BackLink
+                  onClick={this.props.changeCategory}
+                >
+                  <NavigateBefore />
+                  {Strings.BACK_T_R_S}
+                </BackLink>
+                <Separator vertical="1rem" />
+                <TopDish
+                  title={"OVERALL RANKINGS"}
+                  name="500 SKUs"
+
+                />
+                <Separator vertical="3rem" />
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                >
+
+                  <RankingsTable
+                    active="BRAND"
+                    data={overallRankings}
+                    selectProduct={selectProduct}
+                    productCardCondition={this.props.productCardCondition}
+
+                  />
+                  {active && <ProductCard
+                    title={name}
+                    image={image}
+                    rank={move ? move.num : false}
+                  />}
+                </Grid>
+              </Grid>
+            )
         }
-        </Grid>
       </AnimationBox>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  rankingsBySubNav: state.rankingsBySubNav,
+  overallRankings: state.overallRankings,
+  productCardCondition: state.productCardCondition,
+})
+
+const mapDispatchToProps = {
+  changeCategory,
+  changeTable,
+  selectProduct,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(RankingsSub)
