@@ -17,6 +17,7 @@ import top from '../static/images/top.svg'
 import topActive from '../static/images/topActive.svg'
 import messaging from '../static/images/messaging.svg'
 import messagingActive from '../static/images/messagingActive.svg'
+import logo from '../static/images/logo.svg'
 
 
 const dashboardIcon = (path, activeName) => {
@@ -33,11 +34,17 @@ const dashboardIcon = (path, activeName) => {
   }
 }
 
-export default function LeftDivider({ classes, activeName }) {
+export default function LeftDivider(props) {
+  console.log(props)
+  const { classes, activeName, handleNavigation } = props
   return (
     <div>
       {/* <div className={classes.toolbar} /> */}
-      <Logo> {Strings.LOGO} </Logo>
+      <Logo
+        onClick={() => handleNavigation("/")}
+      >
+        <img src={logo} alt="" />
+      </Logo>
       <Divider />
       <List className={classes.listBox}>
         {data.map((elem, index) => (

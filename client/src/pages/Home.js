@@ -53,7 +53,7 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
-  listBox:{
+  listBox: {
     paddingTop: 0
   },
   content: {
@@ -61,8 +61,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
 
   },
-  
-  
+
+
 });
 
 class Home extends React.Component {
@@ -75,11 +75,11 @@ class Home extends React.Component {
   };
 
   render() {
-    const { classes, theme, location:{ pathname} } = this.props;
+    const { classes, theme, location: { pathname }, history: { push } } = this.props;
 
     const drawer = (
       <div>
-        <LeftDivider classes={classes} activeName={pathname}/>
+        <LeftDivider classes={classes} activeName={pathname} handleNavigation={push} />
       </div>
     );
 
@@ -96,9 +96,9 @@ class Home extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            
+
             <Typography variant="h6" color="inherit" noWrap>
-             <UserAvatar />
+              <UserAvatar />
             </Typography>
           </Toolbar>
         </AppBar>

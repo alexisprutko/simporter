@@ -16,8 +16,6 @@ export default class ProductCard extends Component {
                     container
                     direction="column"
                     alignItems="center"
-
-
                 >
                     <Separator vertical="90px" />
                     <TextSpan
@@ -39,7 +37,6 @@ export default class ProductCard extends Component {
                     <ImageBox
                         image={image}
                     />
-
                 </ProductCardBox>
             </Paper>
         )

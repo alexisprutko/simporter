@@ -9,6 +9,7 @@ import { mainAnimation } from './animation'
 export const Logo = styled.h1`
    color: ${Colors.mainBlue};
    padding-left: 56px;
+   cursor: pointer;
 `
 // avatar menu
 
