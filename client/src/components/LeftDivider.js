@@ -34,9 +34,7 @@ const dashboardIcon = (path, activeName) => {
   }
 }
 
-export default function LeftDivider(props) {
-  console.log(props)
-  const { classes, activeName, handleNavigation } = props
+export default function LeftDivider({ classes, activeName, handleNavigation }) {
   return (
     <div>
       {/* <div className={classes.toolbar} /> */}

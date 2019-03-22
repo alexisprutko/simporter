@@ -21,7 +21,7 @@ export default class RankingsCategory extends Component {
                 >
                     {
                         data.map((elem, index) => (
-                            <CategoryDishList elem={elem} id={index} key={index}  handleClick={() => this.props.handleClick(elem)}/>
+                            <CategoryDishList elem={elem} id={index} key={index} handleClick={() => this.props.handleClick(elem)} />
                         ))
                     }
                 </Grid>

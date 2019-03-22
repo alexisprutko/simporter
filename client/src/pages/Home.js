@@ -7,7 +7,8 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  Typography
+  Typography,
+  Grid
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
@@ -21,6 +22,7 @@ import Forecast from './Forecast'
 import Messaging from './Messaging'
 import Rankings from './Rankings'
 import RankingsSub from './RankingsSub'
+import { Separator } from '../components/ui';
 
 
 const drawerWidth = 270;
@@ -42,6 +44,7 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
     },
     backgroundColor: "#f6f7f9",
+    height: "120px"
   },
   menuButton: {
     marginRight: 20,
@@ -97,9 +100,12 @@ class Home extends React.Component {
               <MenuIcon />
             </IconButton>
 
-            <Typography variant="h6" color="inherit" noWrap>
+            <Grid 
+              container
+              justify="flex-end"
+            >
               <UserAvatar />
-            </Typography>
+            </Grid>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
@@ -132,6 +138,7 @@ class Home extends React.Component {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          <Separator vertical="50px" />
           <Route exact path="/" component={Dashboard} />
           <Route path="/forecast" component={Forecast} />
           <Route path="/messaging" component={Messaging} />

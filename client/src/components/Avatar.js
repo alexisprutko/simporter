@@ -3,7 +3,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
-import  Sizes from '../constants/Sizes'
+import Paper from '@material-ui/core/Paper'
+import Sizes from '../constants/Sizes'
+import { Grid } from '@material-ui/core';
+import Colors from '../constants/Colors';
+import { TextSpan } from './ui';
 
 
 // test data
@@ -11,7 +15,7 @@ const options = [
   'None',
   'Atria',
   'Callisto',
-  
+
 ];
 
 class UserAvatar extends React.Component {
@@ -23,23 +27,33 @@ class UserAvatar extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  handleClose =  () => {
+     this.setState({ anchorEl: null });
   };
 
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
     return (
-      <div>
-        <Button
-            onClick={this.handleClick}
-            style={{maxHeight: 68}}
+      <Paper
+        onClick={this.handleClick}
+        style={{ maxHeight: 68, width: "210px", padding: "1rem", marginTop: "20px", cursor: "pointer", position: 'relative' }}
+      >
+        <Grid 
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+          onClick={this.handleClose}
         >
-            <Avatar src="http://shing.mobile9.com/download/media/442/avatarmrbe_yfqlmi9e.jpg" />
-            <h5> Area Strak </h5>
-        </Button>
+          <Avatar src="http://shing.mobile9.com/download/media/442/avatarmrbe_yfqlmi9e.jpg" />
+        <TextSpan
+          color={Colors.textBlue}
+        >
+          Area Stark 
+        
+        </TextSpan>
+        </Grid>
         <Menu
           id="long-menu"
           anchorEl={anchorEl}
@@ -58,7 +72,7 @@ class UserAvatar extends React.Component {
             </MenuItem>
           ))}
         </Menu>
-      </div>
+      </Paper>
     );
   }
 }
