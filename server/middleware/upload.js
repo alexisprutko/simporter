@@ -1,15 +1,13 @@
-
 const multer = require('multer')
 const moment = require('moment')
 const path = require('path')
-
-
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
         return cb(null, path.resolve("uploads/", "admin/", "sheets"))
     },
     filename(req, file, cb) {
+        !file && cb(null, false)
         const date = moment().format('DDMMYYYY-HHmmss_SSS')
         return cb(null, `${date}-${file.originalname}`)
     }

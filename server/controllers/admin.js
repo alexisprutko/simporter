@@ -6,7 +6,7 @@ class AdminController {
         if(file){
             res.json({ok: "ok"}) 
         }else{
-            handleError({ type: "error" },res)
+            handleError({ message: "Please try again" },res)
         }
     }
 }
