@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+
 // routers
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
@@ -28,17 +29,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use((error, req, res, next) => {
-   if(error.type === "entity.parse.failed"){
-    return handleError({message: "inland json"}, res)
-   }
-    next()
+  if (error.type === "entity.parse.failed") {
+    return handleError({ message: "inland json" }, res)
+  }
+  next()
 })
 // routs
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
 
-// 404
+// // 404
 // app.use((req, res, next) => {
 //   return res.status(404).json({ name: 'RouteNotFound', message: 'Not Found', status: 404 });
 // });
