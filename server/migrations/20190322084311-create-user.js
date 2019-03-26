@@ -1,6 +1,6 @@
 'use strict';
-const { DataTypes } = require('sequelize')
-const validation = require('validator')
+const { DataTypes } = require('sequelize');
+const validation = require('validator');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -30,6 +30,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      password_hash: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       role:{
         type: DataTypes.ENUM(["ADMIN", "AUTH", "PUBLIC"])
