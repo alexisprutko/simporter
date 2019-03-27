@@ -11,7 +11,7 @@ export const Logo = styled.h1`
    padding-left: 56px;
    padding-top: 20px;
    cursor: pointer;
-   height: 80px;
+   height: 50px;
 `
 // avatar menu
 
@@ -69,7 +69,8 @@ export const TextSpan = styled.span`
    font-family: Ubuntu;
    font-size: ${props => props.size ? props.size : "1rem"};
    color: ${props => props.color ? props.color : Colors.mainGrey};
-   font-weight: ${props => props.weight ? props.weight : 'normal'}
+   font-weight: ${props => props.weight ? props.weight : 'normal'};
+   line-height: ${props => props.lineHeight ? props.lineHeight : 'auto'};
 `
 
 export const Separator = styled.div`
@@ -90,8 +91,6 @@ export const DialogueCardHeader = styled(Grid)`
    width: 480px !important;
    height: 112px !important;
    padding-left: 32px !important;
-
-  
 `
 export const DialogueCardBody = styled(Grid)`
    background-color: ${props => props.color ? props.color : 'red'};
@@ -100,9 +99,7 @@ export const DialogueCardBody = styled(Grid)`
    flex-wrap: wrap;
    width: 480px !important;
   padding-bottom: 20px;
-   padding-left: 32px !important;
-
-  
+   padding-left: 32px !important;         
 `
 export const CardIconBox = styled.div`
    width: 40px;
@@ -214,11 +211,11 @@ export const TextBox = styled.span`
 `
 export const PercentItemBox = styled(Grid)`
    width: 540px !important;
-   height: 44px !important; 
+   height: 47px !important; 
    border-color:  ${props => props.bordercolor ?  props.bordercolor : "red"} !important;
    border-width: 1px;
    border-style: solid;
    border-radius: 4px; 
    box-sizing: border-box; 
-   margin-top: 20px
+   margin-top: 23px
 `

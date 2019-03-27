@@ -37,7 +37,7 @@ class UserAvatar extends React.Component {
     return (
       <Paper
         onClick={this.handleClick}
-        style={{ maxHeight: 68, width: "210px", padding: "1rem", marginTop: "20px", cursor: "pointer", position: 'relative' }}
+        style={{ maxHeight: 68, width: "210px", padding: "1rem", marginTop: "10px", cursor: "pointer", position: 'relative' }}
       >
         <Grid 
           container

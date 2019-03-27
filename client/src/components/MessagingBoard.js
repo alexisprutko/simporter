@@ -16,8 +16,7 @@ export default class MessagingBoard extends Component {
             <Paper>
 
                 <TextParagraph
-                    style={{ padding: "1.5rem" , fontWeight: "500"}}
-                    
+                    style={{ padding: "1.5rem", fontWeight: "500" }}
                 >
                     {title}
                 </TextParagraph>
@@ -29,11 +28,46 @@ export default class MessagingBoard extends Component {
                     style={{ padding: "10px" }}
                 >
                     <div>
-                        <MessagingBoardItem percent={80} pColor={pColor} bordercolor={bordercolor} mainColor={mainColor} />
-                        <MessagingBoardItem percent={60} pColor={pColor} bordercolor={bordercolor} mainColor={mainColor} />
-                        <MessagingBoardItem percent={40} pColor={pColor} bordercolor={bordercolor} mainColor={mainColor} />
-                        <MessagingBoardItem percent={90} pColor={pColor} bordercolor={bordercolor} mainColor={mainColor} />
-                        <MessagingBoardItem percent={98} pColor={pColor} bordercolor={bordercolor} mainColor={mainColor} />
+                        <MessagingBoardItem
+                            percent={80} 
+                            pColor={pColor}
+                            bordercolor={bordercolor}
+                            mainColor={mainColor}
+                            title="Affordable"
+                            textColor={mainColor === Colors.mainPink ?  Colors.darkPink  : Colors.white}
+                        />
+                        <MessagingBoardItem
+                            percent={60}
+                            pColor={pColor}
+                            bordercolor={bordercolor}
+                            mainColor={mainColor}
+                            title="Affordable"
+                            textColor={mainColor === Colors.mainPink ?  Colors.darkPink  : Colors.white}
+                        />
+                        <MessagingBoardItem
+                            percent={40}
+                            pColor={pColor}
+                            bordercolor={bordercolor}
+                            mainColor={mainColor}
+                            title="Affordable"
+                            textColor={mainColor === Colors.mainPink ?  Colors.darkPink  : Colors.white}
+                        />
+                        <MessagingBoardItem
+                            percent={90}
+                            pColor={pColor}
+                            bordercolor={bordercolor}
+                            mainColor={mainColor}
+                            title="Affordable"
+                            textColor={mainColor === Colors.mainPink ?  Colors.darkPink  : Colors.white}
+                        />
+                        <MessagingBoardItem
+                            percent={98} 
+                            pColor={pColor}
+                            bordercolor={bordercolor}
+                            mainColor={mainColor}
+                            title="Affordable"
+                            textColor={mainColor === Colors.mainPink ? Colors.darkPink : Colors.white}
+                        />
 
                     </div>
                     <WordCloud words={words} textColor={textColor} />

@@ -23,9 +23,18 @@ export default class MessagingBoardItem extends Component {
                 </Grid>
                 <div style={{
                     width: "80%",
-                    background: `linear-gradient(to right, ${this.props.mainColor} , #fff ${this.props.percent}%)`
+                    backgroundImage: `linear-gradient(to right, ${this.props.mainColor} , #fff ${this.props.percent}%)`,
+                    paddingLeft: "20px",
+                    
                 }}
-                />
+                >
+                    <TextSpan 
+                        color={this.props.textColor}
+                        lineHeight="40px"
+                    >
+                        { this.props.title } 
+                    </TextSpan> 
+                </div>
 
             </PercentItemBox>
         )

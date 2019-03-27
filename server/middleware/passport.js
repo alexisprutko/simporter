@@ -1,4 +1,3 @@
-const passport = require('passport');
 const models = require('../models');
 
 const JwtStrategy = require('passport-jwt').Strategy,

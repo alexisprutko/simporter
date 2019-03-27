@@ -9,4 +9,4 @@ const AdminController = require('../controllers/admin')
 
 router.post("/upload/xlc", passport.authenticate('jwt', { session: false }), role(ADMIN), upload.single('file'), AdminController.uploadXlc)
 
-module.exports = router
+module.exports = router   

@@ -11,5 +11,6 @@ export default {
     golden: "#F7D200",
     strenght: "#0EBAA5",
     strenghtGradient: "rgba(15, 199, 177, .8)",
-    lightBlue: "#9ad3ff"
+    lightBlue: "#9ad3ff",
+    darkPink: "#CC6270"
   };

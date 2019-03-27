@@ -25,7 +25,7 @@ export default class Messaging extends Component {
         <MessagingBoard
           words={words}
           textColor={Colors.mainPink}
-          pColor="tomato"
+          pColor={ Colors.darkPink }
           bordercolor="tomato"
           mainColor={Colors.mainPink}
           title="Weaknesses"

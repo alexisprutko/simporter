@@ -47,6 +47,6 @@ app.use("/api/v1/admin", adminRouter);
 //
 app.listen(process.env.PORT, error => {
   if (error) throw error;
-  console.log(`Server 🚀 🚀 🚀 running on port ${process.env.PORT} `);
+  console.log(`Server 🚀 🚀 🚀 🚀 🚀  running on port ${process.env.PORT} `);
 });
 

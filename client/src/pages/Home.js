@@ -44,7 +44,7 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
     },
     backgroundColor: "#f6f7f9",
-    height: "120px"
+    height: "90px"
   },
   menuButton: {
     marginRight: 20,

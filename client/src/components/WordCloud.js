@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Colors from '../constants/Colors'
-import { Grid } from '@material-ui/core' 
+import { Grid } from '@material-ui/core'
 
 class WordCloud extends Component {
     randomSizeGen = () => {
@@ -12,11 +12,13 @@ class WordCloud extends Component {
     render() {
         const { words, textColor } = this.props
         return (
-            <Grid style={{ padding: "5%" }}>
+            <Grid
+                style={{ padding: "5% 3%", textAlign: "center" }}
+            >
                 {
                     words && words.map((elem, index) => (
-                        <span style={{ color: textColor, fontSize: this.randomSizeGen(), margin: "30px", fontWeight: "500" }} key={index} > 
-                            {elem} 
+                        <span style={{ color: textColor, fontSize: this.randomSizeGen(), margin: this.randomSizeGen() + "px", fontWeight: "500" }} key={index} >
+                            {elem}
                         </span>
                     ))
                 }
