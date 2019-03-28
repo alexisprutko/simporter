@@ -219,3 +219,10 @@ export const PercentItemBox = styled(Grid)`
    box-sizing: border-box; 
    margin-top: 23px
 `
+
+export const FormPaper = styled(Paper)`
+   padding: 2%;
+   min-width: 500px;
+   ${media.phone`min-width: 300px;` }
+   ${media.tablet`min-width: 320px;` }
+`

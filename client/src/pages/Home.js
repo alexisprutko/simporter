@@ -7,13 +7,12 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  Typography,
   Grid
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
 import { Route } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 import LeftDivider from '../components/LeftDivider'
 import UserAvatar from '../components/Avatar'
 
@@ -22,7 +21,10 @@ import Forecast from './Forecast'
 import Messaging from './Messaging'
 import Rankings from './Rankings'
 import RankingsSub from './RankingsSub'
-import { Separator } from '../components/ui';
+import { Separator } from '../components/ui'
+
+import { signOut } from '../redux/ducks/auth'
+
 
 
 const drawerWidth = 270;
@@ -78,7 +80,7 @@ class Home extends React.Component {
   };
 
   render() {
-    const { classes, theme, location: { pathname }, history: { push } } = this.props;
+    const { classes, theme, location: { pathname }, history: { push }, signOut, user } = this.props;
 
     const drawer = (
       <div>
@@ -104,7 +106,7 @@ class Home extends React.Component {
               container
               justify="flex-end"
             >
-              <UserAvatar />
+              <UserAvatar signOut={signOut} user={user} />
             </Grid>
           </Toolbar>
         </AppBar>
@@ -158,4 +160,13 @@ Home.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Home);
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+const mapDispatchToProps = {
+  signOut
+}
+
+
+export default connect( mapStateToProps, mapDispatchToProps )(withStyles(styles, { withTheme: true })(Home))

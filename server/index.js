@@ -16,6 +16,10 @@ require('dotenv').config();
 // create application
 const app = express();
 
+
+//cors
+app.use(cors());
+
 // passport 
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
@@ -23,10 +27,6 @@ require('./middleware/passport')(passport);
 // body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
-// cors
-app.use(cors());
 
 app.use((error, req, res, next) => {
   if (error.type === "entity.parse.failed") {

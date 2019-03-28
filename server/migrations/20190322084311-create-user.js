@@ -18,7 +18,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        
+
       },
       password: {
         type: Sequelize.STRING
@@ -35,7 +35,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      role:{
+      role: {
         type: DataTypes.ENUM(["ADMIN", "AUTH", "PUBLIC"])
       }
 

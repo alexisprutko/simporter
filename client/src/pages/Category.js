@@ -51,7 +51,7 @@ function Category(props) {
                                             className={classes.paper}
                                             disabled={!item.active}
                                         >
-                                            <TextSpan color={ item.active ? Colors.white : Colors.mainGrey}>
+                                            <TextSpan color={item.active ? Colors.white : Colors.mainGrey}>
                                                 {item.name}
                                             </TextSpan>
                                         </InitialMenuButton>

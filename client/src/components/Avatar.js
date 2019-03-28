@@ -33,6 +33,7 @@ class UserAvatar extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
+    console.log(this.props)
     const open = Boolean(anchorEl);
     return (
       <Paper
@@ -50,7 +51,7 @@ class UserAvatar extends React.Component {
         <TextSpan
           color={Colors.textBlue}
         >
-          Area Stark 
+          { this.props.user.username }
         
         </TextSpan>
         </Grid>
@@ -63,6 +64,7 @@ class UserAvatar extends React.Component {
             style: {
               maxHeight: Sizes.AVATAR_MENU_ITEM_HEIGHT * 4,
               width: 200,
+              zIndex: -1
             },
           }}
         >
@@ -71,6 +73,7 @@ class UserAvatar extends React.Component {
               {option}
             </MenuItem>
           ))}
+          <MenuItem onClick={this.props.signOut}> sign out </MenuItem>
         </Menu>
       </Paper>
     );

@@ -1,39 +1,56 @@
-import { takeLatest, call } from 'redux-saga/effects'
+import { takeLatest, call, put } from 'redux-saga/effects'
 
-import { registerNewUserAPI } from '../../api/auth'
+import { registerNewUserAPI, loginAPI } from '../../api/auth'
 
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER'
 export const ADD_NEW_USER = 'ADD_NEW_USER'
+export const LOGIN_USER = 'LOGIN_USER'
+export const SIGN_OUT = 'SIGN_OUT'
 
-export const registerNewUser = (user) => ({type: REGISTER_NEW_USER, payload: user})
+export const registerNewUser = (user) => ({ type: REGISTER_NEW_USER, payload: user })
+export const loginUser = (payload) => ({ type: LOGIN_USER, payload })
+export const addNewUser = (payload) => ({ type: ADD_NEW_USER, payload })
+export const signOut = () => ({type:  SIGN_OUT})
 
 const initialState = {
-    username: '',
-    token: '',
-    id: '',
-    email: '',
-    auth: false,
+  username: '',
+  token: '',
+  id: '',
+  email: '',
+  auth: false,
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-
-  case 'typeName':
-    return { ...state, ...payload }
-
-  default:
-    return state
+    case ADD_NEW_USER:
+      return { username:payload.user.firstName + " " + payload.user.lastName, id: payload.user.id, auth: true, token: payload.token }
+    case SIGN_OUT: return initialState
+    default:
+      return state
   }
 }
 
-function* loginSaga() {
-    yield console.log('err')
+function* loginSaga({type, payload}) {
+  try {
+    const request = yield call(loginAPI,payload.data)
+    const res = yield request.json()
+    if(res.token){
+      const action = yield call(addNewUser, res)
+      console.log(payload)
+       payload.push('/category')
+      yield put(action)
+    }else{
+      console.log(res)
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 
-function* registerSaga(action){
+function* registerSaga(action) {
   try {
-    const user =  yield call(registerNewUserAPI, action.payload)
+    const user = yield call(registerNewUserAPI, action.payload)
     console.log(user)
   } catch (error) {
     console.log(error)
@@ -41,6 +58,6 @@ function* registerSaga(action){
 }
 
 export function* userWatcher() {
-    yield takeLatest('ddd', loginSaga)
-    yield takeLatest('REGISTER_NEW_USER', registerSaga)
+  yield takeLatest(LOGIN_USER, loginSaga)
+  yield takeLatest('REGISTER_NEW_USER', registerSaga)
 }
