@@ -25,7 +25,7 @@ class DragNListItem extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { title, handleClick, itemList } = this.props
+    const { title, itemList } = this.props
 
     return (
       <div>
@@ -45,7 +45,6 @@ class DragNListItem extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-
           {
             itemList.map(elem => <MenuItem key={elem} onClick={this.handleClose}> <TextSpan>{elem}</TextSpan> </MenuItem>)
           }

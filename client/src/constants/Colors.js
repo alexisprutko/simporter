@@ -12,5 +12,8 @@ export default {
     strenght: "#0EBAA5",
     strenghtGradient: "rgba(15, 199, 177, .8)",
     lightBlue: "#9ad3ff",
-    darkPink: "#CC6270"
+    darkPink: "#CC6270",
+    mainError: '#d32f2f',
+    mainWarring:  '#ffa000',
+    mainSuccess: '#43a047'
   };

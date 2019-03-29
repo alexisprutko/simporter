@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { TextField, Grid, Button, withStyles, Link } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 
-import { REGISTRATION, LOGIN } from '../../constants/auth'
+import { REGISTRATION } from '../../constants/auth'
 import { FormPaper, TextSpan, Separator } from '../ui'
+import { emailValidation, passwordValidation } from '../../helpers/validation'
 import Colors from '../../constants/Colors'
 
 const styles = theme => ({
@@ -18,37 +19,43 @@ const styles = theme => ({
 });
 
 class LoginForm extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             email: "",
             password: "",
-            emailError: false,
-            passwordError: false
+            emailError: "",
+            passwordError: ""
         }
     }
     handleChange = (event) => {
         const { name, value } = event.target
-        this.setState({[name]: value})
+        this.setState({ [name]: value })
     }
-    handleClick = () =>{
+    handleClick = () => {
         const { email, password } = this.state
-        if(!email){
-            this.setState({emailError: true})
-        }else if(!password){
-            this.setState({passwordError: true})
-        }else{
-            this.props.handleClick({data: { email, password }, push :this.props.history.push})
+        const emailError = emailValidation(email)
+        const passwordError = passwordValidation(password)
+        if (emailError) {
+            this.setState({ emailError, email: '' })
         }
-    } 
+        if (passwordError) {
+            this.setState({ passwordError, password:''})
+        }
+        if (!passwordError && !emailError) {
+            this.props.handleClick({ data: { email, password }, push: this.props.history.push })
+        }
+    }
     handleFocus = () => {
-        this.setState({emailError: false, passwordError: false})
+        this.setState({ emailError: '', passwordError: '' })
+        this.props.clearMessage()
     }
     render() {
         const { classes } = this.props
         const { email, password, emailError, passwordError } = this.state
         return (
             <FormPaper>
+                <form>
                 <Grid
                     container
                     direction="column"
@@ -57,7 +64,9 @@ class LoginForm extends Component {
                 >
                     <Separator vertical="1rem" />
                     <TextSpan color={Colors.textBlue} weight="600" size="2rem"> Log In </TextSpan>
-                    <Separator vertical="1.5rem" />
+                    <Separator vertical="2rem" horizontal="100% " >
+                        <TextSpan color={Colors.mainPink} size="0.8rem"> {emailError}</TextSpan>
+                    </Separator>
                     <TextField
                         type="email"
                         variant="outlined"
@@ -66,10 +75,12 @@ class LoginForm extends Component {
                         name="email"
                         onChange={this.handleChange}
                         value={email}
-                        error={emailError}
+                        error={Boolean(emailError)}
                         onFocus={this.handleFocus}
                     />
-                    <Separator vertical="1.5rem" />
+                    <Separator vertical="2rem" horizontal='100%'  >
+                        <TextSpan color={Colors.mainPink} size="0.8rem"> {passwordError}</TextSpan>
+                    </Separator>
                     <TextField
                         type="password"
                         variant="outlined"
@@ -78,8 +89,10 @@ class LoginForm extends Component {
                         name="password"
                         onChange={this.handleChange}
                         value={password}
-                        error={passwordError}
+                        error={Boolean(passwordError)}
                         onFocus={this.handleFocus}
+                        autoComplete="off"  
+                        
                     />
                     <Separator vertical="1rem" />
                     <Button
@@ -109,6 +122,8 @@ class LoginForm extends Component {
                         </Link>
                     </Grid>
                 </Grid>
+
+                </form>
             </FormPaper>
         )
     }

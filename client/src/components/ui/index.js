@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Grid, Button, ListItem, Paper } from '@material-ui/core'
 import { media } from './mediaConfig'
 import Colors from '../../constants/Colors'
-import { mainAnimation } from './animation'
+import { mainAnimation, alertAnimationDesktop, alertAnimationMobile } from './animation'
 
 
 // logo
@@ -76,6 +76,8 @@ export const TextSpan = styled.span`
 export const Separator = styled.div`
    height: ${props => props.vertical ? props.vertical : '10px'};
    width: ${props => props.horizontal ? props.horizontal : '0px'};
+   display: flex;
+   align-items: center;
 `
 
 export const AnimationBox = styled(Grid)`
@@ -225,4 +227,20 @@ export const FormPaper = styled(Paper)`
    min-width: 500px;
    ${media.phone`min-width: 300px;` }
    ${media.tablet`min-width: 320px;` }
+`
+export const AlertComponentBox =  styled(Paper)`
+   display: ${props => props.active  ? "block" : 'none'};
+   position:  fixed;
+   padding-left: 1.5%;
+   padding-right: 1.5%;
+   top:  20px;
+   right: 20px;
+   width: 30%;
+   max-width: 600px;
+   height: 50px;
+   ${media.tablet`min-width: 100%; top: 0;right: 0; animation: ${alertAnimationMobile} 0.3s 1 ease-out forwards`}
+   ${media.phone`min-width: 100%; top: 0; right: 0`}
+   background-color:  ${props => props.type === 'error' ? Colors.mainError : props.type === 'success' ? Colors.mainSuccess : Colors.mainWarring } !important;  
+   animation: ${alertAnimationDesktop} 0.3s 1 ease-out forwards;
+
 `

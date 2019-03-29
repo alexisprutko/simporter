@@ -2,7 +2,6 @@ import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Sizes from '../constants/Sizes'
 import { Grid } from '@material-ui/core';
@@ -33,7 +32,7 @@ class UserAvatar extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    console.log(this.props)
+
     const open = Boolean(anchorEl);
     return (
       <Paper

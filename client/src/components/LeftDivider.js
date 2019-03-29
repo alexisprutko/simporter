@@ -2,7 +2,7 @@ import React from 'react'
 import { ListItemIcon, List, Divider } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-import Strings from '../constants/Strings'
+// import Strings from '../constants/Strings'
 import { Logo, LeftNavigationListItem, LeftNavigationListItemText } from './ui'
 import data from '../testData/navigation'
 

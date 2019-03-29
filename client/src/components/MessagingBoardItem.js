@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { PercentItemBox, TextSpan } from './ui'
 import Colors from '../constants/Colors';
 import { Grid } from '@material-ui/core';

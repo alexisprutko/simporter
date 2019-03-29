@@ -19,7 +19,7 @@ class Auth {
         const passwordValid = await user.validPassword(password)
         if (passwordValid) {
             const token = jwt.sign(user.toJson(), "secret", { expiresIn: 60 * 60 * 5 })
-            res.status(200).json({ token, user: user.toJson() })
+            res.status(200).json({ type: "success" ,token, user: user.toJson() })
         } else {
             // 
             handleError({ message: ErrorMessages.EMAIL_OR_PASSWORD_INCORRECT }, res)
@@ -46,8 +46,9 @@ class Auth {
                             role: PUBLIC,
                             password_hash: hash
                         })
+                        const token = jwt.sign(newUser.toJson(), "secret", { expiresIn: 60 * 60 * 5 })
                         // add confirm email
-                        res.status(201).json({ type: "success"  })
+                        res.status(201).json({ type: "success" ,user:newUser.toJson()   , token })
                     } catch (e) {
                         handleError(e, res)
                     }

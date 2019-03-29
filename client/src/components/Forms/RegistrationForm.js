@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { TextField, Grid, Button, withStyles, Link } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 
-import { REGISTRATION, LOGIN } from '../../constants/auth'
+import {  LOGIN } from '../../constants/auth'
 import { FormPaper, TextSpan, Separator } from '../ui'
+import { emailValidation, passwordValidation, firstNameValidation, lastNameValidation } from '../../helpers/validation'
 import Colors from '../../constants/Colors'
 
 const styles = theme => ({
@@ -19,14 +20,16 @@ const styles = theme => ({
 
 class RegistrationForm extends Component {
   constructor(props) {
-    super(props)
+    super(props)  
     this.state = {
       email: "",
       password: "",
       firstName: "",
       lastName: "",
-      emailError: false,
-      passwordError: false
+      emailError: "",
+      passwordError: "",
+      firstNameError: "",
+      lastNameError: "",
     }
   }
   handleChange = (event) => {
@@ -34,23 +37,27 @@ class RegistrationForm extends Component {
     this.setState({ [name]: value })
   }
   handleClick = () => {
-    const { email, password } = this.state
-    if (!email) {
-      this.setState({ emailError: true })
-    } else if (!password) {
-      this.setState({ passwordError: true })
-    } else {
-      this.props.handleClick({ data: { email, password }, push: this.props.history.push })
+    const { email, password, firstName, lastName } = this.state
+    const emailError = emailValidation(email)
+    const passwordError = passwordValidation(password)
+    const firstNameError = firstNameValidation(firstName)
+    const lastNameError = lastNameValidation(lastName)
+
+    this.setState({ passwordError, emailError, firstNameError, lastNameError })
+    if (!emailError && !passwordError && !firstNameError && !lastNameError) {
+      this.props.handleClick({ data: { email, password, firstName, lastName }, push: this.props.history.push })
     }
   }
   handleFocus = () => {
-    this.setState({ emailError: false, passwordError: false })
+    this.setState({ emailError: '', passwordError: '', firstNameError: '', lastNameError: '' })
+    this.props.clearMessage()
   }
   render() {
     const { classes } = this.props
-    const { email, password, emailError, passwordError, firstName, lastName } = this.state
+    const { email, password, emailError, passwordError, firstName, lastName, firstNameError, lastNameError } = this.state
     return (
       <FormPaper>
+        <form>
         <Grid
           container
           direction="column"
@@ -59,7 +66,10 @@ class RegistrationForm extends Component {
         >
           <Separator vertical="1rem" />
           <TextSpan color={Colors.textBlue} weight="600" size="2rem"> Sign Up </TextSpan>
-          <Separator vertical="1.5rem" />
+          <Separator vertical="2rem" horizontal="100% " >
+            <TextSpan color={Colors.mainPink} size="0.8rem"> {firstNameError}</TextSpan>
+          </Separator>
+
           <TextField
             type="text"
             variant="outlined"
@@ -68,10 +78,12 @@ class RegistrationForm extends Component {
             name="firstName"
             onChange={this.handleChange}
             value={firstName}
-            error={emailError}
+            error={Boolean(firstNameError)}
             onFocus={this.handleFocus}
           />
-          <Separator vertical="1.5rem" />
+          <Separator vertical="2rem" horizontal="100% " >
+            <TextSpan color={Colors.mainPink} size="0.8rem"> {lastNameError}</TextSpan>
+          </Separator>
           <TextField
             type="text"
             variant="outlined"
@@ -80,10 +92,12 @@ class RegistrationForm extends Component {
             name="lastName"
             onChange={this.handleChange}
             value={lastName}
-            error={emailError}
+            error={Boolean(lastNameError)}
             onFocus={this.handleFocus}
           />
-          <Separator vertical="1.5rem" />
+          <Separator vertical="2rem" horizontal="100% " >
+            <TextSpan color={Colors.mainPink} size="0.8rem"> {emailError}</TextSpan>
+          </Separator>
           <TextField
             type="email"
             variant="outlined"
@@ -92,10 +106,12 @@ class RegistrationForm extends Component {
             name="email"
             onChange={this.handleChange}
             value={email}
-            error={emailError}
+            error={Boolean(emailError)}
             onFocus={this.handleFocus}
           />
-          <Separator vertical="1.5rem" />
+          <Separator vertical="2rem" horizontal="100% " >
+            <TextSpan color={Colors.mainPink} size="0.8rem"> {passwordError}</TextSpan>
+          </Separator>
           <TextField
             type="password"
             variant="outlined"
@@ -104,8 +120,9 @@ class RegistrationForm extends Component {
             name="password"
             onChange={this.handleChange}
             value={password}
-            error={passwordError}
+            error={Boolean(passwordError)}
             onFocus={this.handleFocus}
+            autoComplete="off" 
           />
           <Separator vertical="1rem" />
           <Button
@@ -127,6 +144,7 @@ class RegistrationForm extends Component {
           </Link>
 
         </Grid>
+        </form>
       </FormPaper>
     )
   }
