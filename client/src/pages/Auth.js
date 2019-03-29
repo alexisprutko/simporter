@@ -4,11 +4,14 @@ import { connect } from 'react-redux'
 
 import LoginForm from '../components/Forms/LoginForm'
 import RegistrationForm from '../components/Forms/RegistrationForm'
+import AlertComponent from '../components/AlertComponent'
+
 import { Separator } from '../components/ui'
 import logo from '../static/images/logo.svg'
 
 import { REGISTRATION, LOGIN } from '../constants/auth'
-import { loginUser } from '../redux/ducks/auth'
+import { loginUser, registerNewUser } from '../redux/ducks/auth'
+import { clearMessage, errorMessage } from '../redux/ducks/alerts'
 
 
 class Auth extends Component {
@@ -29,35 +32,41 @@ class Auth extends Component {
         }
     }
     handleClick = (data) => {
-    
-            return this.props.loginUser(data)
-       
+        if (this.state.comp === REGISTRATION) {
+            return this.props.registerNewUser(data)
+        }
+        return this.props.loginUser(data)
+
     }
     render() {
         const { comp } = this.state
         const Comp = this.componentSwitcher(comp)
+        const { alert: { active, message, type }, clearMessage } = this.props
         return (
             <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center"
-            >
+            >   {active && <AlertComponent active={active} message={message} closeEvent={clearMessage} type={type} />}
                 <Separator vertical="3rem" />
                 <img src={logo} alt="" />
                 <Separator vertical="3rem" />
-                <Comp changePage={this.changePage} handleClick={this.handleClick} />
+                <Comp changePage={this.changePage} handleClick={this.handleClick} clearMessage={clearMessage} />
             </Grid>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-  
+    alert: state.alert
 })
 
 const mapDispatchToProps = {
-    loginUser
+    loginUser,
+    registerNewUser,
+    clearMessage,
+    errorMessage
 }
 
 
