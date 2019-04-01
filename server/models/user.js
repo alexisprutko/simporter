@@ -67,8 +67,8 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compare(password || 'ohh', this.password_hash);
   };
   user.prototype.toJson = function () {
-    const { id, firstName, lastName, email } = this
-    return  { id, firstName, lastName, email } 
+    const { id, firstName, lastName, email, role } = this
+    return  { id, firstName, lastName, email, role } 
   }
 
   return user;
