@@ -9,4 +9,6 @@ const AdminController = require('../controllers/admin')
 
 router.post("/upload/xlc", passport.authenticate('jwt', { session: false }), role(ADMIN), upload.single('file'), AdminController.uploadXlc)
 router.get("/uploads", passport.authenticate('jwt', { session: false }), role(ADMIN), AdminController.getSheets)
+router.post("/convert", AdminController.buildData)
+
 module.exports = router   
