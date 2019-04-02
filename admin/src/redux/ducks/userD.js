@@ -1,8 +1,9 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 import { registerNewUserAPI, loginAPI } from '../../api/auth'
-import { errorMessage, 
-    // warningMessage, 
-    // successMessage 
+import {
+  errorMessage,
+  // warningMessage, 
+  // successMessage 
 } from './alerts'
 
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER'
@@ -33,30 +34,31 @@ export default (state = initialState, { type, payload }) => {
   }
 }
 
-function* loginSaga({  payload }) {
+function* loginSaga({ payload }) {
   try {
     const request = yield call(loginAPI, payload.data)
     const res = yield request.json()
     if (res.token) {
-      if(res.user.role === "ADMIN"){
+      if (res.user.role === "ADMIN") {
         const action = yield call(addNewUser, res)
-        payload.push('/')
         yield put(action)
-      }else{
-        yield put(errorMessage("Access is denied"))  
-      }
+         payload.push('/')
     
+      } else {
+        yield put(errorMessage("Access is denied"))
+      }
+
     } else {
       yield put(errorMessage(res.error.message))
     }
   } catch (error) {
     yield put(errorMessage(error.message))
-   
+
   }
 }
 
 
-function* registerSaga({  payload }) {
+function* registerSaga({ payload }) {
   try {
     const user = yield call(registerNewUserAPI, payload.data)
     const res = yield user.json()

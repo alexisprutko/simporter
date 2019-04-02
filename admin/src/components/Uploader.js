@@ -1,32 +1,66 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { Grid, Button } from '@material-ui/core'
+import { DropzoneArea } from 'material-ui-dropzone'
 
+import { uploadFile } from '../redux/ducks/fileUploader'
+import { Separator } from './ui'
 
 class Uploader extends Component {
-
-  
-  handleUploadFile = (event) => {
-    const data = new FormData()
-    data.append('file', event.target.files[0])
-    data.append('name', 'some value user types')
-    data.append('description', 'some value user types')
-    console.log(data)
-    // axios.post('/files', data).then((response) => {
-    //   this.setState({
-    //     imageUrl: response.data.fileUrl
-    //   })
-    // })
+  state = {
+    data: null
   }
-    
+  handleUploadFile = () => {
+    this.props.uploadFile(this.state.data)
+  }
+  handleChange = async (event) => {
+    console.log(event)
+    const data = new FormData()
+    await data.append('file', event[0])
+    await this.setState({ data })
+  }
   render() {
-    return(
+
+    return (
       <div>
-      
-        <div>
-          <input type="file" onChange={this.handleUploadFile} />
-        </div>  
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+
+        >
+          {/* <input type="file" onChange={this.handleChange} /> */}
+          <Separator vertical="1.5rem" />
+          <DropzoneArea
+            onChange={this.handleChange}
+            acceptedFiles={['application/*']}
+            filesLimit={1}
+          />
+          <Separator vertical="1.5rem" />
+          <Button
+            onClick={this.handleUploadFile}
+            disabled={!this.state.data}
+            color="primary"
+            variant="contained"
+            size="large"
+          >
+            upload
+            </Button>
+
+        </Grid>
+
       </div>
     )
   }
 }
 
-export default Uploader
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+  uploadFile
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Uploader)

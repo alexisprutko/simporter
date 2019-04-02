@@ -9,6 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Grid from '@material-ui/core/Grid'
+
+import { NavLink } from 'react-router-dom'
 
 const styles = {
     root: {
@@ -48,7 +51,7 @@ class MenuAppBar extends React.Component {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
         const open = Boolean(anchorEl);
-
+        if (!auth) return null
         return (
             <div className={classes.root}>
 
@@ -57,9 +60,21 @@ class MenuAppBar extends React.Component {
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            Photos
-            </Typography>
+                        <Grid
+                            container
+                            justify="center"
+                        >
+                            <Typography variant="h6" color="inherit" className={classes.grow}>
+                                <NavLink to="/" >
+                                    files
+                            </NavLink>
+                            </Typography>
+                            <Typography>
+                                <NavLink to="/upload" >
+                                    upload
+                            </NavLink>
+                            </Typography>
+                        </Grid>
                         {auth && (
                             <div>
                                 <IconButton
@@ -86,6 +101,7 @@ class MenuAppBar extends React.Component {
                                 >
                                     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                    <MenuItem onClick={() => window.location.href = '/login'}> Sign out</MenuItem>
                                 </Menu>
                             </div>
                         )}

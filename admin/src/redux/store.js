@@ -2,7 +2,7 @@ import { createBrowserHistory } from 'history'
 import { createStore, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import  createSagaMiddleware  from 'redux-saga'
-import { routerMiddleware, connectRouter } from 'connected-react-router'
+
 
 import storage from 'redux-persist/lib/storage'
 import rootReducer from './reducer'
@@ -15,6 +15,7 @@ const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['files', 'alert']
 }
  
 const persistedReducer = persistReducer(persistConfig, rootReducer)
