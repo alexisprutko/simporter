@@ -14,21 +14,24 @@ const storage = multer.diskStorage({
 
 })
 const fileFilter =  (req, file, cb) => {
-    if (file.mimetype === 'application/vnd.ms-excel') {
+
+    if (file.mimetype === 'application/vnd.ms-excel' || file.originalname.match(/\.(xlsm)$/)) {
+        console.log("OK")
         req.file = file
         cb(null, true)
     } else {
+        console.log("OK")
         cb(null, false)
     }
 }
  const onError = (err, next) => {
-    // console.log('error', err);
+    console.log('error', err);
     next();
   }
 
 module.exports = multer({
     storage,
     fileFilter,
-    limits: { fileSize: 1024 * 1024 * 5 },
+    limits: { fileSize: 1024 * 1024 * 10 },
     onError,
 })
