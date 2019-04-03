@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core'
 
 import { getFiles } from '../redux/ducks/fileUploader'
 import FileItem from '../components/FileItem'
+import { TextSpan } from '../components/ui';
 
 class Files extends Component {
     componentDidMount = () => {
@@ -16,8 +17,11 @@ class Files extends Component {
         return (
             <Grid
                 container
-               
-            >
+
+            >   
+                {
+                    this.props.files.length < 1 &&<Grid container justify="center">  <TextSpan size="1.7rem"> Nothing To Show </TextSpan> </Grid>
+                }
                 {
                     this.props.files.map(elem => <FileItem
                         id={elem.id}

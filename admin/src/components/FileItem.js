@@ -9,6 +9,7 @@ import EllipsisText from "react-ellipsis-text"
 export default class FileItem extends Component {
 
   render() {
+    console.log(this.props)
     return (
       <Grid
         container
@@ -19,7 +20,7 @@ export default class FileItem extends Component {
       >
         <img src={xlsx} alt=""  style={{width: 70}}/>
         <TextSpan size="1rem" >
-            <EllipsisText text={this.props.name } length={13} />
+            <EllipsisText text={this.props.name } length={12} />
             
         </TextSpan>
         <TextSpan size=".8rem">{ this.props.size }</TextSpan>

@@ -12,6 +12,7 @@ export default class AlertComponent extends Component {
         setTimeout(this.props.closeEvent, 5000)
     }
     render() {
+
         const { active, closeEvent, message } = this.props
         return (
             <AlertComponentBox

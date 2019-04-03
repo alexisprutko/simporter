@@ -6,15 +6,26 @@ module.exports = (sequelize, DataTypes) => {
     size: DataTypes.INTEGER,
     destination: DataTypes.STRING,
     mimetype: DataTypes.STRING,
-    path: DataTypes.STRING
+    path: DataTypes.STRING,
+    converted: {
+      type: DataTypes.BOOLEAN,
+      set con (value){
+        this.setDataValue(value)
+      },
+      get con (){
+        return this.getDataValue('converted')
+      }
+
+    }
   }, {});
   sheet.associate = function(models) {
     // associations can be defined here
   };
   
+  
   sheet.prototype.toJson = function () {
-      const { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt} = this
-      return { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt}
+      const { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted} = this
+      return { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted: converted}
   }
   return sheet;
 };
