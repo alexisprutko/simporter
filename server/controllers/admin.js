@@ -31,12 +31,16 @@ class AdminController {
 
     async buildData(req, res, next) {
         const { id } = req.body
-        const sh = await models.forecast.findOne({where: {fileID: id}})
-        // if(sh) return handleError( {message: "File already converted"}, res)
+        console.log(req.body)
+
+     
         if (id) {
+            const sh = await models.forecast.findOne({where: {fileID: id}})
+            // if(sh) return handleError( {message: "File already converted"}, res)
             try {
                 // find file
                 const sheet = await models.sheet.findOne({ where: { id } })
+         
                 if (sheet) {
                     // create json
                     const output = await xlsConverter(sheet.path)
@@ -58,7 +62,7 @@ class AdminController {
                     if(insert){
                         await sheet.update({converted: 1})
                     }
-                    res.json({ output, sheet:converted })
+                    res.json({ type: "success",output, sheet:converted })
                 } else {
                     handleError({ message: "Sheet not fount" }, res)
                 }

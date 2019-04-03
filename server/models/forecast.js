@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     duration: DataTypes.STRING,
     num: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    fileID: DataTypes.INTEGER
+    fileID: DataTypes.INTEGER,
+    name: DataTypes.STRING
   }, {});
   forecast.associate = function(models) {
     // associations can be defined here

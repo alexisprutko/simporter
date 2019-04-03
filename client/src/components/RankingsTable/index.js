@@ -28,7 +28,7 @@ export default class RankingsTable extends Component {
           active="BRAND"
           expectedRank={this.props.expectedRank ? "Expected Rank" : false}
           star={this.props.star}
-          
+
         />
 
         {
@@ -39,7 +39,7 @@ export default class RankingsTable extends Component {
               sku={elem.sku}
               duration={elem.duration}
               brand={elem.brand}
-              move={elem.move}
+              move={elem.num > 0 ? { num: elem.num, type: true } : { num: elem.num, type: false }}
               id={elem.id}
               active={this.state.activeItem ? this.state.activeItem.id === elem.id : false}
               handleClick={() => this.handleSelect(elem)}

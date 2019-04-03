@@ -7,3 +7,4 @@ export const BASE_URL = "http://localhost:3011"
 
 export const UPLOAD_ENDPOINT = '/api/v1/admin/upload/xlc'
 export const GET_UPLOAD_FILES = '/api/v1/admin/uploads'
+export const UPLOAD_FILE_ENDPOINT = '/api/v1/admin/convert'

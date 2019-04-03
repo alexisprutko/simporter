@@ -10,6 +10,7 @@ import ProductCard from '../components/ProductCard'
 import { selectProduct } from '../redux/ducks/productCardCondition'
 import TopDish from '../components/TopDish'
 import Strings from '../constants/Strings'
+import { getData } from '../redux/ducks/overallRankings'
 import { connect } from 'react-redux'
 
 
@@ -17,9 +18,15 @@ class RankingsSub extends Component {
   componentWillUnmount = () => {
     scrollTop()
   }
+  componentDidMount = () => {
+    console.log('elll')
+    this.props.getData()
+  }
+  
 
   render() {
     const { overallRankings, productCardCondition: { active, data: { name, image, move } }, selectProduct } = this.props
+    console.log(overallRankings)
     return (
       <AnimationBox
         container
@@ -61,11 +68,11 @@ class RankingsSub extends Component {
                     productCardCondition={this.props.productCardCondition}
 
                   />
-                  {active && <ProductCard
+                  {/* {active && <ProductCard
                     title={name}
                     image={image}
                     rank={move ? move.num : false}
-                  />}
+                  />} */}
                 </Grid>
               </Grid>
             )
@@ -85,6 +92,7 @@ const mapDispatchToProps = {
   changeCategory,
   changeTable,
   selectProduct,
+  getData
 }
 
 

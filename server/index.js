@@ -7,6 +7,7 @@ const passport = require('passport');
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const adminRouter = require('./routes/admin')
+const forecastRouter = require('./routes/forecast')
 
 const handleError = require('./helpers/handleError')
 
@@ -38,6 +39,8 @@ app.use((error, req, res, next) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/forecast", forecastRouter);
+
 
 // // 404
 // app.use((req, res, next) => {
