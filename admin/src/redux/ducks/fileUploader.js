@@ -1,5 +1,6 @@
 import { takeLatest, call, select, put } from 'redux-saga/effects'
 import { uploadFileAPI, getFilesAPI, convertFileAPI } from '../../api/fileUplaod'
+import { signOut } from './userD'
 import { errorMessage } from './alerts'
 
 const UPLOAD_FILE = 'UPLOAD_FILE'
@@ -26,11 +27,11 @@ function* convertFileWorker({ type, payload }) {
         const token = `Bearer ${store.user.token}`
         const req = yield call(convertFileAPI, payload, token)
         const res = yield req.json()
-        if(res.type === 'success'){
+        if (res.type === 'success') {
             yield put(getFiles())
         }
     } catch (error) {
-        
+
     }
 }
 
@@ -50,16 +51,21 @@ function* getFilesWorker({ type }) {
         const store = yield select()
         const token = `Bearer ${store.user.token}`
         const req = yield call(getFilesAPI, token)
-        const res = yield req.json()
-        if (res.type === "success") {
-            const action = yield call(addList, res.data)
-            yield put(action)
+        if (req.status === 401) {
+            yield put(signOut())
         } else {
-            yield put(errorMessage(res.message))
+            const res = yield req.json()
+            if (res.type === "success") {
+                const action = yield call(addList, res.data)
+                yield put(action)
+            } else {
+                yield put(errorMessage(res.message))
+            }
         }
         // console.log(res)
     } catch (error) {
-
+        const so = yield call(signOut)
+        yield put(so)
     }
 }
 

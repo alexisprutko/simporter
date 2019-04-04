@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Confirm from './pages/Confirm'
 
 import Home from './pages/Home'
 import Category from './pages/Category'
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route path='/confirm/:id' component={Confirm} />
           {!this.props.auth && <Route component={Auth} /> }
           <Route path="/category" component={Category} />
           <Route path='/' component={Home} />
