@@ -15,6 +15,7 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LeftDivider from '../components/LeftDivider'
 import UserAvatar from '../components/Avatar'
+import AlertComponent from '../components/AlertComponent'
 
 import Dashboard from './Dashboard'
 import Forecast from './Forecast'
@@ -73,15 +74,17 @@ const styles = theme => ({
 class Home extends React.Component {
   state = {
     mobileOpen: false,
-  };
+    confirmAlert: false
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   render() {
+  
     const { classes, theme, location: { pathname }, history: { push }, signOut, user } = this.props;
-
+    console.log("!user.confirm === this.state.confirmAlert", !user.confirm ===this.state.confirmAlert )
     const drawer = (
       <div>
         <LeftDivider classes={classes} activeName={pathname} handleNavigation={push} />
@@ -101,8 +104,8 @@ class Home extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-
-            <Grid 
+           
+            <Grid
               container
               justify="flex-end"
             >
@@ -146,6 +149,7 @@ class Home extends React.Component {
           <Route path="/messaging" component={Messaging} />
           <Route path="/rankings" component={Rankings} />
           <Route path="/rankings-sub" component={RankingsSub} />
+           
         </main>
       </div>
     );
@@ -169,4 +173,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect( mapStateToProps, mapDispatchToProps )(withStyles(styles, { withTheme: true })(Home))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Home))

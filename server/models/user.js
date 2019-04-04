@@ -57,6 +57,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.ENUM(["ADMIN", "AUTH", "PUBLIC"]),
       defaultValue:  "PUBLIC",
+    },
+    confirm: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 0,
     }
 
   }, {});
@@ -67,8 +71,8 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compare(password || 'ohh', this.password_hash);
   };
   user.prototype.toJson = function () {
-    const { id, firstName, lastName, email, role } = this
-    return  { id, firstName, lastName, email, role } 
+    const { id, firstName, lastName, email, role, confirm } = this
+    return  { id, firstName, lastName, email, role, confirm: confirm } 
   }
 
   return user;

@@ -9,6 +9,7 @@ import Chart from '../components/Chart'
 import DialogueCard from '../components/DialogueCard'
 import data from '../testData/dasboardData'
 import { scrollTop } from '../helpers/scroll';
+import AlertComponent from '../components/AlertComponent'
 
 
 
@@ -24,6 +25,12 @@ export default class Dashboard extends Component {
         direction="column"
 
       >
+        <AlertComponent
+          type="warning"
+          message="Please confirm your email."
+          active={true}
+          closeEvent={() => this.setState({ confirmAlert: true })}
+        />
         <BackLink
           onClick={() => push('/category')}
         >

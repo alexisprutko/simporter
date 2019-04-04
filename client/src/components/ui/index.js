@@ -233,10 +233,11 @@ export const AlertComponentBox =  styled(Paper)`
    position:  fixed;
    padding-left: 1.5%;
    padding-right: 1.5%;
-   top:  20px;
+   top:  ${props => props.bottom ? "1050px": "20px"};
    right: 20px;
    width: 30%;
    max-width: 600px;
+   z-index: -100 !important;
    height: 50px;
    ${media.tablet`min-width: 100%; top: 0;right: 0; animation: ${alertAnimationMobile} 0.3s 1 ease-out forwards`}
    ${media.phone`min-width: 100%; top: 0; right: 0`}

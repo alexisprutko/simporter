@@ -5,6 +5,7 @@ const handleError = require('../helpers/handleError')
 const ErrorMessages = require('../constants/ErrorMessages')
 const ErrorTypes = require('../constants/ErrorTypes')
 const { PUBLIC } = require('../constants/roles')
+const emailSender = require('../helpers/emailSender')
 
 
 class Auth {
@@ -19,7 +20,7 @@ class Auth {
         const passwordValid = await user.validPassword(password)
         if (passwordValid) {
             const token = jwt.sign(user.toJson(), "secret", { expiresIn: 60 * 60 * 5 })
-            res.status(200).json({ type: "success" ,token, user: user.toJson() })
+            res.status(200).json({ type: "success", token, user: user.toJson() })
         } else {
             // 
             handleError({ message: ErrorMessages.EMAIL_OR_PASSWORD_INCORRECT }, res)
@@ -48,7 +49,12 @@ class Auth {
                         })
                         const token = jwt.sign(newUser.toJson(), "secret", { expiresIn: 60 * 60 * 5 })
                         // add confirm email
-                        res.status(201).json({ type: "success" ,user:newUser.toJson()   , token })
+                        try {
+                          const res = await emailSender(req.body.email, 'confirm', `<a href="http://localhost:3000/confirm/${token}">confirm</a>`)
+                        } catch (error) {
+                            console.log(error)
+                        }
+                        res.status(201).json({ type: "success", user: newUser.toJson(), token })
                     } catch (e) {
                         handleError(e, res)
                     }
@@ -64,8 +70,16 @@ class Auth {
         }
 
     }
-    async emailConfirm() {
+    async emailConfirm(req, res) {
         // email confirm
+        try {
+            const { user } = req
+            const updatedUser = await user.update({confirm: 1})
+            console.log(updatedUser)
+        } catch (error) {
+            
+        }
+        res.json({ type: "success" ,user: req.user })
     }
     async resetPassword() {
         // reset Password

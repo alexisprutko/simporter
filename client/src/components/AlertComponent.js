@@ -12,11 +12,13 @@ export default class AlertComponent extends Component {
         setTimeout(this.props.closeEvent, 5000)
     }
     render() {
-        const { active, closeEvent, message } = this.props
+        console.log(this.props)
+        const { active, closeEvent, message, bottom } = this.props
         return (
             <AlertComponentBox
                 type="error"
                 // material-ui warning
+                bottom={bottom ? 1 : 0}
                 active={active ? 1 : 0}
             >
                 <Grid
