@@ -18,15 +18,16 @@ import topActive from '../static/images/topActive.svg'
 import messaging from '../static/images/messaging.svg'
 import messagingActive from '../static/images/messagingActive.svg'
 import logo from '../static/images/logo.svg'
+import eject from '..//static/images/eject.svg'
 
 
 const dashboardIcon = (path, activeName) => {
   switch (path) {
     case '/': return path === activeName ? dashActive : dashIcon
     case '/rankings': return path === activeName ? rankingActive : rankingIcon
-    case '/forecast': return path === activeName ? dashActive : dashIcon
+    case '/forecast': return path === activeName ? topActive : top
     case '/rankings-sub': return path === activeName ? rankingSubActive : rankingSub
-    case '/top-product-list': return path === activeName ? topActive : top
+    case '/top-product-list': return path === activeName ? eject : eject
     case '/messaging': return path === activeName ? messagingActive : messaging
 
     default:

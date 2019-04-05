@@ -9,9 +9,10 @@ import { mainAnimation, alertAnimationDesktop, alertAnimationMobile } from './an
 export const Logo = styled.h1`
    color: ${Colors.mainBlue};
    padding-left: 56px;
-   padding-top: 20px;
+   padding-top: 30px;
+   padding-bottom: 50px;
    cursor: pointer;
-   height: 50px;
+   height: 32px;
 `
 // avatar menu
 
@@ -42,6 +43,8 @@ export const LeftNavigationListItem = styled(ListItem)`
    border-left: 4px solid;
    border-color: ${props => props.selected ? Colors.mainBlue : 'transparent'};
    margin-top: 24px;
+   padding-left:50px !important;
+   height: 64px;
 `
 export const LeftNavigationListItemText = styled.span`
    color: ${props => props.selected ? Colors.mainBlue : Colors.mainGrey};
@@ -59,9 +62,10 @@ export const BackLink = styled.div`
 
 export const SmallDishBox = styled(Paper)`
    ${media.phone`width: 200px`}
-   width: 300px;
-   min-height: 112px;
-   padding: 1rem 1.5rem;
+   width: 352px;
+   min-height: 152px;
+   padding: 1.6rem 1.5rem 1rem 1.5rem;
+   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32);
    cursor: pointer;
 `
 
@@ -233,7 +237,7 @@ export const AlertComponentBox =  styled(Paper)`
    position:  fixed;
    padding-left: 1.5%;
    padding-right: 1.5%;
-   top:  ${props => props.bottom ? "1050px": "20px"};
+   top:  ${props => props.bottom ? "150px": "60px"} !important;
    right: 20px;
    width: 30%;
    max-width: 600px;

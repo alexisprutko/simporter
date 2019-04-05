@@ -9,7 +9,7 @@ import { AlertComponentBox, TextSpan } from './ui'
 
 export default class AlertComponent extends Component {
     componentDidMount = () => {
-        setTimeout(this.props.closeEvent, 5000)
+        // setTimeout(this.props.closeEvent, 10000)
     }
     render() {
         console.log(this.props)
@@ -29,7 +29,7 @@ export default class AlertComponent extends Component {
                 >
                     <TextSpan color={Colors.white}>  <Error /> </TextSpan>
                     <TextSpan color={Colors.white}>  {message} </TextSpan>
-                    <TextSpan color={Colors.white} onClick={closeEvent}>  <Close /> </TextSpan>
+                    <TextSpan color={Colors.white} style={{cursor: 'pointer'}} onClick={closeEvent}>  <Close /> </TextSpan>
 
                 </Grid>
             </AlertComponentBox>

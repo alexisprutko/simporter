@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   
   
   sheet.prototype.toJson = function () {
-      const { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted} = this
-      return { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted: converted}
+      const { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted, category} = this
+      return { fieldname, originalname, size, destination, mimetype, createdAt, updatedAt, converted: converted, category}
   }
   return sheet;
 };

@@ -6,7 +6,7 @@ import { AnimationBox, Separator, BackLink } from '../components/ui';
 import { CATEGORY, changeCategory, changeTable } from '../redux/ducks/rankingsBySubNav'
 import RankingsCategory from '../components/RankingsCategory'
 import RankingsTable from '../components/RankingsTable'
-import ProductCard from '../components/ProductCard'
+// import ProductCard from '../components/ProductCard'
 import { selectProduct } from '../redux/ducks/productCardCondition'
 import TopDish from '../components/TopDish'
 import Strings from '../constants/Strings'
@@ -25,7 +25,7 @@ class RankingsSub extends Component {
   
 
   render() {
-    const { overallRankings, productCardCondition: { active, data: { name, image, move } }, selectProduct } = this.props
+    const { overallRankings, selectProduct } = this.props
     console.log(overallRankings)
     return (
       <AnimationBox

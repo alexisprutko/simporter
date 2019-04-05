@@ -5,7 +5,8 @@ import Avatar from '@material-ui/core/Avatar'
 import Paper from '@material-ui/core/Paper'
 import Sizes from '../constants/Sizes'
 import { Grid } from '@material-ui/core';
-import Colors from '../constants/Colors';
+import Colors from '../constants/Colors'
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import { TextSpan } from './ui';
 
 
@@ -26,8 +27,8 @@ class UserAvatar extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose =  () => {
-     this.setState({ anchorEl: null });
+  handleClose = () => {
+    this.setState({ anchorEl: null });
   };
 
   render() {
@@ -37,22 +38,42 @@ class UserAvatar extends React.Component {
     return (
       <Paper
         onClick={this.handleClick}
-        style={{ maxHeight: 68, width: "210px", padding: "1rem", marginTop: "10px", cursor: "pointer", position: 'relative' }}
+        style={{
+          height: 56,
+          width: "224px",
+          padding: "0.5rem 1rem",
+          marginTop: "10px",
+          cursor: "pointer",
+
+        }}
       >
-        <Grid 
+        <Grid
           container
           direction="row"
-          justify="space-around"
+          justify="space-between"
           alignItems="center"
           onClick={this.handleClose}
         >
-          <Avatar src="http://shing.mobile9.com/download/media/442/avatarmrbe_yfqlmi9e.jpg" />
-        <TextSpan
-          color={Colors.textBlue}
-        >
-          { this.props.user.username }
-        
-        </TextSpan>
+          <div
+            style={{
+              width: 44,
+              height: 44,
+              border: `2px solid ${Colors.mainBlue}`,
+              borderRadius: '50%',
+              boxSizing: 'border-box'
+            }}
+          >
+            <Avatar src="http://shing.mobile9.com/download/media/442/avatarmrbe_yfqlmi9e.jpg" />
+          </div>
+          <TextSpan
+            color={Colors.textBlue}
+            style={{ lineHeight: '2rem' }}
+          >
+            {this.props.user.username}
+          </TextSpan>
+          <TextSpan>
+            <ArrowDropDown sizes="1rem" />
+          </TextSpan>
         </Grid>
         <Menu
           id="long-menu"

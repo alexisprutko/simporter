@@ -18,19 +18,21 @@ export default class Dashboard extends Component {
     scrollTop()
   }
   render() {
-    const { history: { push } } = this.props
+    const { history: { push }, activeAlert, closeAlert } = this.props
+    console.log(this.props)
     return (
       <AnimationBox
         container
         direction="column"
 
       >
-        <AlertComponent
+       { activeAlert && <AlertComponent
           type="warning"
           message="Please confirm your email."
           active={true}
-          closeEvent={() => this.setState({ confirmAlert: true })}
-        />
+          closeEvent={closeAlert}
+        />}
+        <Separator vertical="60px"/>
         <BackLink
           onClick={() => push('/category')}
         >
@@ -59,10 +61,10 @@ export default class Dashboard extends Component {
         <Grid
           container
           direction='row'
-          justify='space-around'
+          justify='space-between'
         >
-          <Chart id='1' color={Colors.lightGreen} />
-          <Chart id='2' color={Colors.liteBlue} />
+          <Chart id='1' color={Colors.lightGreen} title="Total Toy Sales"/>
+          <Chart id='2' color={Colors.liteBlue} title="Launches by Subcategory" />
         </Grid>
         <Separator vertical="32px" />
         <TextSpan size="21px" color={Colors.textBlue} weight="500">

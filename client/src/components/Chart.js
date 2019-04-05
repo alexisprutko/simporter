@@ -4,7 +4,7 @@ import {
   AreaChart, Area,
 } from 'recharts';
 import Paper from '@material-ui/core/Paper'
-import { Separator } from '../components/ui'
+import { Separator, TextSpan } from '../components/ui'
 
 const data = [
   {
@@ -43,18 +43,28 @@ export default class Chart extends PureComponent {
 
   render() {
     return (
-      <Paper>
+      <Paper
+        style={{padding: '1.5rem 0'}}
+      >
           <Separator vertical="20px" />
+          <Separator 
+            horizontal="100%"
+            vertical="1.5rem"
+            style={{paddingLeft: '1.5rem'}}
+          >
+
+          <TextSpan weight="500"> { this.props.title } </TextSpan>
+          </Separator>
         <AreaChart
-          width={640}
-          height={300}
+          width={740}
+          height={470}
           data={data}
           syncId={this.props.id}
           margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
+            top: 24, right: 0, left: 0, bottom: 0,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="1 1" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />

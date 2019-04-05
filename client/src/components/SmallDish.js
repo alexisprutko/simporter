@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from '@material-ui/core'
 import Colors from '../constants/Colors'
-import { SmallDishBox, TextSpan } from '../components/ui'
+import { SmallDishBox, TextSpan, Separator } from '../components/ui'
 import triagle from '../static/images/triagle2.svg'
 
 export default class SmallDish extends Component {
@@ -26,7 +26,7 @@ export default class SmallDish extends Component {
                         )
                     }
                 </Grid>
-
+                    <Separator vertical="29px" />
                 <TextSpan
                     size="56px"
                     color={Colors.textBlue}

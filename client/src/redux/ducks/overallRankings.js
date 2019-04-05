@@ -2,7 +2,7 @@ import { put, call, takeLatest, select } from 'redux-saga/effects'
 import { getDataForecast as getDataForecastAPI } from '../../api/forecast'
 import { signOut } from './auth'
 
-import data from '../../testData/rankingsData'
+// import data from '../../testData/rankingsData'
 
 const GET_DATA = 'overallRankings/GET_DATA'
 const ADD_DATA = 'overallRankings/ADD_DATA'

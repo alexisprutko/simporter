@@ -7,7 +7,7 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  Grid
+  Grid,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,7 +15,6 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LeftDivider from '../components/LeftDivider'
 import UserAvatar from '../components/Avatar'
-import AlertComponent from '../components/AlertComponent'
 
 import Dashboard from './Dashboard'
 import Forecast from './Forecast'
@@ -26,13 +25,16 @@ import { Separator } from '../components/ui'
 
 import { signOut } from '../redux/ducks/auth'
 
+import SearchBox from '../components/SearchBox'
 
 
-const drawerWidth = 270;
+
+const drawerWidth = 336;
 
 const styles = theme => ({
   root: {
     display: 'flex',
+    fontFamily: "Ubuntu",
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -47,7 +49,8 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
     },
     backgroundColor: "#f6f7f9",
-    height: "90px"
+    height: "120px",
+    boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.12)'
   },
   menuButton: {
     marginRight: 20,
@@ -84,7 +87,6 @@ class Home extends React.Component {
   render() {
   
     const { classes, theme, location: { pathname }, history: { push }, signOut, user } = this.props;
-    console.log("!user.confirm === this.state.confirmAlert", !user.confirm ===this.state.confirmAlert )
     const drawer = (
       <div>
         <LeftDivider classes={classes} activeName={pathname} handleNavigation={push} />
@@ -95,7 +97,7 @@ class Home extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          <Toolbar variant="regular" style={{paddingTop: '1.5rem'}} >
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -104,7 +106,8 @@ class Home extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-           
+            {/* search box */}
+          <SearchBox />
             <Grid
               container
               justify="flex-end"
@@ -142,9 +145,15 @@ class Home extends React.Component {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <div className={classes.toolbar} />
+          {/* <div className={classes.toolbar} /> */}
           <Separator vertical="50px" />
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" render={(props) => 
+            (<Dashboard 
+              {...props} 
+              activeAlert={!user.confirm && !this.state.confirmAlert ? true : false }
+              closeAlert={() => this.setState({confirmAlert: true})}
+              />)
+              } />
           <Route path="/forecast" component={Forecast} />
           <Route path="/messaging" component={Messaging} />
           <Route path="/rankings" component={Rankings} />
