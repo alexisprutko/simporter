@@ -35,6 +35,7 @@ export default class Dashboard extends Component {
         <Separator vertical="60px"/>
         <BackLink
           onClick={() => push('/category')}
+          style={{maxWidth: 150}}
         >
           <NavigateBefore />
           {Strings.GO_BACK_CATEGORY}
@@ -66,11 +67,11 @@ export default class Dashboard extends Component {
           <Chart id='1' color={Colors.lightGreen} title="Total Toy Sales"/>
           <Chart id='2' color={Colors.liteBlue} title="Launches by Subcategory" />
         </Grid>
-        <Separator vertical="32px" />
+        <Separator vertical="72px" />
         <TextSpan size="21px" color={Colors.textBlue} weight="500">
           {Strings.PINNED_ACTIONS}
         </TextSpan>
-        <Separator vertical="32px" />
+        <Separator vertical="33px" />
         <Grid
           container
           direction="row"

@@ -29,8 +29,8 @@ export default class DialogueCard extends Component {
       <div>
         <DialogueCardHeader
           container
-          direction="column"
-          style={{ position: 'relative' }}
+            direction="column"
+            style={{ position: 'relative'}}
           color={this.props.color}
         >
           <Separator vertical="24px" />
@@ -38,6 +38,7 @@ export default class DialogueCard extends Component {
             color="rgba(255,255,255,.8)"
             weight="500"
             size="20px"
+            lineHeight="28px"
           >
             Urgent
             </TextSpan>
@@ -45,25 +46,27 @@ export default class DialogueCard extends Component {
             color={Colors.white}
             weight="500"
             size="20px"
+            lineHeight="28px"
           >
             urgent take action now
             </TextSpan>
           <CardIconBox >
-            <img src={this.iconSwitcher()} alt="" />
+            <img style={{width: 20, height: 20}} src={this.iconSwitcher()} alt="" />
           </CardIconBox>
         </DialogueCardHeader>
         <DialogueCardBody
           color={Colors.white}
         >
-          <Separator vertical="2rem" />
+          <Separator vertical="1rem" />
             <TextParagraph width="85%" color={Colors.textBlue} lineHeight="29px">
               The benefits offered by this product significantly mismatch consumer interest. Reset launch plans with an educational message.  
             </TextParagraph>
-            <Separator vertical="3rem" />
+            <Separator vertical="2.5rem" />
             <Grid
               container
               direction="row"
-              justify="space-around"
+              justify="space-between"
+              style={{paddingRight: 30}}
             >
                 <Link
                   style={{paddingTop: '15px', cursor: "pointer"}}
@@ -82,7 +85,9 @@ export default class DialogueCard extends Component {
                   <TextSpan
                     color={Colors.white}
                     weight="500"
-                  >Unpin</TextSpan>
+                  >
+                  Unpin
+                  </TextSpan>
               </RoundButton>
              
             </Grid>

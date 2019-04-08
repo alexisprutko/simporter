@@ -7,9 +7,15 @@ import Home from './pages/Home'
 import Category from './pages/Category'
 import Auth from './pages/Auth'
 
+import { getData } from './redux/ducks/overallRankings'
+
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getData()
+  }
+  
   render() {
     return (
       <div className="App">
@@ -29,7 +35,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  
+  getData
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

@@ -11,7 +11,7 @@ export default class RankingsTableHeader extends Component {
         const { rank, brand, name, sku, expectedRank, active, star } = this.props
         return (
             <Paper
-                style={{ padding: '12px 20px'}}
+                style={{ padding: '12px 2px', boxShadow: '0px 4px 24px rgba(1, 106, 163, 0.04)', width: 992}}
             >
                 <Grid
                     container
@@ -19,17 +19,17 @@ export default class RankingsTableHeader extends Component {
                     alignItems="center"
                     wrap="nowrap"
 
-                >   { star && <TextSpan ><Star /></TextSpan> }
+                >   { star && <TextSpan style={{marginLeft: 20}} ><Star /></TextSpan> }
+                    <Separator horizontal="20px"/>
+                    {rank && <RankingsTableHeaderElement weight='500' name={rank} active={active === "RANK"} />}
+                    <Separator horizontal="4px"/>
+                    {brand && <RankingsTableHeaderElement weight='500' name={brand} active={active === "BRAND"} />}
+                    <Separator horizontal="64px"/>
+                    {name && <RankingsTableHeaderElement name={name} weight='500' active={active === "NAME"} />}
+                    <Separator horizontal="29%"/>
+                    {sku && <RankingsTableHeaderElement name={sku} weight='500' active={active === "SKU"} />}
                     <Separator horizontal="2%"/>
-                    {rank && <RankingsTableHeaderElement name={rank} active={active === "RANK"} />}
-                    <Separator horizontal="5%"/>
-                    {brand && <RankingsTableHeaderElement name={brand} active={active === "BRAND"} />}
-                    <Separator horizontal="20%"/>
-                    {name && <RankingsTableHeaderElement name={name} active={active === "NAME"} />}
-                    <Separator horizontal="20%"/>
-                    {sku && <RankingsTableHeaderElement name={sku} active={active === "SKU"} />}
-                    <Separator horizontal="2%"/>
-                    {expectedRank && <RankingsTableHeaderElement name={expectedRank} active={active === "EXPECTEDRANK"} />}
+                    {expectedRank && <RankingsTableHeaderElement name={expectedRank} weight='500' active={active === "EXPECTEDRANK"} />}
                 </Grid>
             </Paper>
         )

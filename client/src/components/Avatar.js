@@ -44,6 +44,7 @@ class UserAvatar extends React.Component {
           padding: "0.5rem 1rem",
           marginTop: "10px",
           cursor: "pointer",
+          boxShadow: '0px 12px 40px rgba(209, 220, 246, 0.32)'
 
         }}
       >

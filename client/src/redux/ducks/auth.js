@@ -47,7 +47,6 @@ function* loginSaga({ payload }) {
   try {
     const request = yield call(loginAPI, payload.data)
     const res = yield request.json()
-    console.log(res)
     if (res.token) {
       const action = yield call(addNewUser, res)
       payload.push('/category')

@@ -3,7 +3,16 @@ import RankingsTableHeader from './RankingsTableHeader'
 import PropTypes from 'prop-types'
 import RankingsTableItem from './RankingsTableItem'
 import { TableBox } from '../ui'
-export default class RankingsTable extends Component {
+import { withStyles } from '@material-ui/core'
+
+const styles = theme => ({
+  box: { 
+    maxWidth: "992px", 
+    marginRight: '2rem'
+   }
+})
+
+class RankingsTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,10 +24,10 @@ export default class RankingsTable extends Component {
     this.props.selectProduct(data)
   }
   render() {
-    const { data } = this.props
+    const { data, classes } = this.props
     return (
       <TableBox
-        style={{ maxWidth: "992px" }}
+        className={classes.box}
       >
         <RankingsTableHeader
           rank="RANK"
@@ -70,3 +79,4 @@ RankingsTable.defaultProps = {
   sku: null,
   expectedRank: null,
 }   
+export default  withStyles(styles)(RankingsTable) 

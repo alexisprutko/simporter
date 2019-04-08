@@ -18,12 +18,7 @@ class RankingsSub extends Component {
   componentWillUnmount = () => {
     scrollTop()
   }
-  componentDidMount = () => {
-    console.log('elll')
-    this.props.getData()
-  }
-  
-
+ 
   render() {
     const { overallRankings, selectProduct } = this.props
     console.log(overallRankings)

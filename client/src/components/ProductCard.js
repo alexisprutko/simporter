@@ -8,9 +8,10 @@ import numberTransformer from '../helpers/numberAdder'
 export default class ProductCard extends Component {
     render() {
         const { title, rank, image } = this.props
+        console.log(this.props)
         return (
             <Paper
-                style={{ maxHeight: '530px', width: "480px", marginRight: "48px" }}
+                style={{ maxHeight: '530px', width: "480px", boxShadow:'0px 12px 40px rgba(209, 220, 246, 0.32)' }}
             >
                 <ProductCardBox
                     container
@@ -30,10 +31,18 @@ export default class ProductCard extends Component {
                         size="1.1rem"
                         color={Colors.textBlue}
                     >
-                        RANK:
-                    <TextBox> {numberTransformer(rank)} </TextBox>
+                        RANK: {'  '}
+                    <TextBox style={{marginLeft: 7}}> 
+                        <TextSpan
+                            color={Colors.textBlue}
+                            weight='bold'
+                            size="1.1rem"
+                        >
+                        {numberTransformer(rank)}
+                        </TextSpan>
+                     </TextBox>
                     </TextSpan>
-                    <Separator vertical="50px" />
+                    <Separator vertical="67px" />
                     <ImageBox
                         image={image}
                     />

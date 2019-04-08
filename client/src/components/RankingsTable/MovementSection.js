@@ -1,21 +1,43 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TextSpan } from '../ui'
+import { withStyles } from '@material-ui/core'
 import Colors from '../../constants/Colors';
-import triangle from '../../static/images/triagle2.svg'
-import triangleRed from '../../static/images/triangleRed.svg'
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
+import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
 
-export default class MovementSection extends Component {
+const styles = theme => ({
+    box: {
+        paddingRight: "10px",
+        marginLeft: 38,
+        height: 30
+    },
+    numberStyle: {
+        position: "relative", 
+        top: -6.5 
+    }
+})
+class MovementSection extends Component {
     render() {
-        const { move: { num, type } } = this.props
+        const { move: { num, type }, active, classes } = this.props
+        const Icon = !type ? ArrowDropDown : ArrowDropUp
+        const color = active ? Colors.white : type ? Colors.lightGreen : Colors.mainPink
         return (
             <div
-                style={{paddingRight: "10px"}}
+                className={classes.box}
             >
-                <TextSpan color={ type? Colors.lightGreen: Colors.mainPink } size="12px">
-                    <img src={type ? triangle: triangleRed} alt="" style={{ margin: 2.5 }} />
-                    {num}
-                 </TextSpan>
+                <TextSpan color={color} size="12px">
+                    <Icon />
+                </TextSpan>
+                <TextSpan
+                    lineHeight="14px"
+                    color={color}
+                    size="12px"
+                    className={classes.numberStyle}
+                    
+                >
+                    {Math.abs(num)}
+                </TextSpan>
             </div>
         )
     }
@@ -27,3 +49,4 @@ MovementSection.propTypes = {
 MovementSection.defaultProps = {
 
 }
+export default withStyles(styles)(MovementSection)

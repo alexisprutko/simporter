@@ -15,6 +15,7 @@ const styles = theme => ({
         width: '60%',
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto',
+        boxShadow: '0px 12px 40px rgba(209, 220, 246, 0.32)'
     },
     table: {
         minWidth: 700,

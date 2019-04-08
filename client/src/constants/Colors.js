@@ -15,5 +15,5 @@ export default {
     darkPink: "#CC6270",
     mainError: '#d32f2f',
     mainWarring:  '#ffa000',
-    mainSuccess: '#43a047'
+    mainSuccess: '#43a047',
   };

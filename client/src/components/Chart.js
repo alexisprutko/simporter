@@ -44,7 +44,10 @@ export default class Chart extends PureComponent {
   render() {
     return (
       <Paper
-        style={{padding: '1.5rem 0'}}
+        style={{
+          padding: '1.5rem 0',
+          boxShadow: '0px 12px 40px rgba(209, 220, 246, 0.32)'
+        }}
       >
           <Separator vertical="20px" />
           <Separator 

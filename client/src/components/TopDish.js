@@ -8,7 +8,9 @@ class TopDish extends Component {
     render() {
         const { title, name, desc } = this.props
         return (
-            <SmallDishBox>
+            <SmallDishBox
+                style={{minHeight: 115, boxShadow: 'none'}}
+            >
                 <Grid
                     container
                     justify="space-between"
@@ -21,8 +23,9 @@ class TopDish extends Component {
                             color={Colors.textBlue}
                             size="22px"
                             weight="500"
+                            style={{opacity: 0.72}}
                         >{title}</TextSpan>
-                        <Separator />
+                        <Separator vertical="8px"/>
                         <TextSpan
                             color={Colors.mainBlue}
                             size="28px"

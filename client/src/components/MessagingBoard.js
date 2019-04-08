@@ -1,22 +1,38 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Grid, Paper } from '@material-ui/core'
+import { Grid, Paper, withStyles } from '@material-ui/core'
 import { TextParagraph } from './ui'
 
 import MessagingBoardItem from './MessagingBoardItem'
 import WordCloud from './WordCloud'
-import Colors from '../constants/Colors';
+import Colors from '../constants/Colors'
+
+const styles = theme => ({
+    box: {
+        boxShadow: '0px 12px 40px rgba(209, 220, 246, 0.32)',
+        paddingBottom: '3rem'
+    },
+    title: {
+        padding: '10px 1.5rem 0 1.5rem'
+    }, 
+    content: { 
+        padding: "0 1.5rem", 
+        fontWeight: "500" 
+    }
+})
 
 
-export default class MessagingBoard extends Component {
+class MessagingBoard extends Component {
     render() {
-        const { textColor, words, pColor, bordercolor, mainColor, title } = this.props
+        const { textColor, words, pColor, bordercolor, mainColor, title , classes} = this.props
         return (
-            <Paper>
+            <Paper
+                className={classes.box}
+            >
 
                 <TextParagraph
-                    style={{ padding: "1.5rem", fontWeight: "500" }}
+                    className={classes.title}
                 >
                     {title}
                 </TextParagraph>
@@ -25,7 +41,7 @@ export default class MessagingBoard extends Component {
                     direction="row"
                     justify="space-between"
                     wrap="nowrap"
-                    style={{ padding: "10px" }}
+                    className={classes.content}
                 >
                     <div>
                         <MessagingBoardItem
@@ -88,3 +104,4 @@ MessagingBoard.defaultProps = {
     textColor: Colors.mainBlue
 
 }
+export default withStyles(styles)(MessagingBoard)

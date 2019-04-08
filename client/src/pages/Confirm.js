@@ -13,7 +13,6 @@ class Confirm extends Component {
         const { match: { params: { id } }, history: { push } } = this.props
 
         this.props.confirmEmail({ token: id, push })
-        console.log(this.props.match.params)
     }
 
     render() {

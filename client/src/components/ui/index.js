@@ -3,6 +3,7 @@ import { Grid, Button, ListItem, Paper } from '@material-ui/core'
 import { media } from './mediaConfig'
 import Colors from '../../constants/Colors'
 import { mainAnimation, alertAnimationDesktop, alertAnimationMobile } from './animation'
+import { PortraitSharp } from '@material-ui/icons';
 
 
 // logo
@@ -65,7 +66,7 @@ export const SmallDishBox = styled(Paper)`
    width: 352px;
    min-height: 152px;
    padding: 1.6rem 1.5rem 1rem 1.5rem;
-   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32);
+   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32) !important;
    cursor: pointer;
 `
 
@@ -116,8 +117,8 @@ export const CardIconBox = styled.div`
    justify-content: center;
    align-items: center;
    position: absolute;
-   top: 15%;
-   right: 2%;
+   top: 19%;
+   right: 7%;
 `
 export const TextParagraph = styled.p`
    max-width:${props => props.width ? props.width : "auto"};
@@ -168,7 +169,7 @@ export const SmallSquareBox = styled.div`
    background-color: ${props => props.bColor ? props.bColor : Colors.mainBlue}
 `
 export const GreenBorderBox = styled.div`
-   border: 1px solid ${Colors.lightGreen};
+   border: ${props => props.active ?  `1px solid ${Colors.white}` : `1px solid ${Colors.lightGreen}`};
    border-radius: 4px;
    display: flex;
    flex-direction: row;
@@ -183,6 +184,7 @@ export const RectangleDish = styled(Paper)`
    margin: 1.3%;
    margin-left: 0;
    background-color: ${ props => props.active ? Colors.mainBlue : Colors.white} !important;
+   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32) !important;
    cursor: pointer;
 `
 export const NumTexSpan = styled(TextSpan)`
@@ -211,6 +213,8 @@ export const ProductCardBox = styled(Grid)`
    height: 580px;
 `
 export const TextBox = styled.span`
+   width: 72px;
+   height: 36px;
    padding: 5px 20px;
    background-color: ${Colors.paleBlue};
    border-radius: 8px;
@@ -231,6 +235,7 @@ export const FormPaper = styled(Paper)`
    min-width: 500px;
    ${media.phone`min-width: 300px;` }
    ${media.tablet`min-width: 320px;` }
+   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32) !important;
 `
 export const AlertComponentBox =  styled(Paper)`
    display: ${props => props.active  ? "block" : 'none'};
@@ -247,5 +252,6 @@ export const AlertComponentBox =  styled(Paper)`
    ${media.phone`min-width: 100%; top: 0; right: 0`}
    background-color:  ${props => props.type === 'error' ? Colors.mainError : props.type === 'success' ? Colors.mainSuccess : Colors.mainWarring } !important;  
    animation: ${alertAnimationDesktop} 0.3s 1 ease-out forwards;
+   box-shadow: 0px 12px 40px rgba(209, 220, 246, 0.32) !important;
 
 `

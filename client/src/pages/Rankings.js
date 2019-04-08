@@ -15,12 +15,12 @@ class Rankings extends Component {
     scrollTop()
   }
   render() {
-
-    const { overallRankings, productCardCondition: {  active, data:{name, image, move} } ,selectProduct} = this.props
+    const { overallRankings, productCardCondition: { active, data: { name, image, rank } }, selectProduct } = this.props
     return (
       <AnimationBox
         container
         direction="column"
+        style={{ marginTop: 95 }}
       >
         <TopDish
           title={"OVERALL RANKINGS"}
@@ -39,13 +39,13 @@ class Rankings extends Component {
             data={overallRankings}
             selectProduct={selectProduct}
             productCardCondition={this.props.productCardCondition}
-            
-            
+
+
           />
           {active && <ProductCard
             title={name}
             image={image}
-            rank={move ? move.num : false}
+            rank={rank}
           />}
         </Grid>
       </AnimationBox>
